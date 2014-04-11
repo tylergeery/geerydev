@@ -1,0 +1,24 @@
+<div class="header" ng-controller="HeadbarCtrl"> 
+  <h3 class="text-muted">
+  	<a href="/requests">
+  		<img class="prof-pic col-sm-offset-1" src="http://www.gravatar.com/avatar/72fed696e67b00b5f49df7c70f60f74d.png">
+  	</a>
+  	<span class="my-name">Tyler Geery</span>
+  	<img class="cloud" src="images/1df8f9b6.clouds.png">
+  	<div class="cloud-search-holder">
+  		<input class="cloud-search weak" placeholder="Tyler search" ng-model="query" ng-change="research()">
+  		<div class="search-results absolute" ng-show="results.length">
+  			<div class="search-result point" ng-repeat="res in results" ng-click="followBlog(res._id)">
+  				<span class="jumbo-date inline">
+  					{{res.created | date:'dd'}}
+  					<br>
+  					<span class="search-small">{{res.created | date:'MMM'}}</span>
+  				</span>
+  				<div class="search-info inline">
+  					{{res.question | limitTo:30}}...
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </h3>
+</div>

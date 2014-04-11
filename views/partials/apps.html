@@ -1,0 +1,29 @@
+<div ng-include="'partials/headbar'"></div>
+
+<div ng-include="'partials/navbar'" ng-controller="NavCtrl"></div>
+
+
+<!-- Section for about content pertaining to ME -->
+<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+
+	<div class="col-xs-12 col-sm-3 pull-right m-top" ng-include="'partials/blogside'" ng-controller="MainCtrl"></div>
+
+	<div class="col-xs-12 col-sm-9">
+		<div class="iphone">
+			<div class="iscreen">
+				<div class="iapp col-xs-6 col-sm-3" ng-repeat="app in apps">
+					<img ng-src="{{app.uri}}">
+					<div class="iapp-info" ng-show="appInfo">
+						{{app.name}}
+						<br>
+						{{app.content}}
+					</div>
+				</div>
+			</div>
+			<div class="ibutton">
+				<div class="isquare"></div>
+			</div>
+		</div>
+	<div>	
+
+</div></div></div>
