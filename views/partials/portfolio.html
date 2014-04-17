@@ -10,7 +10,7 @@
 	<div ng-repeat="exp in stuff">
 		<div class="project-tab-bar point" ng-init="detail=false" ng-click="detail=!detail">
 			
-			<img class="fun-img" ng-src="images/{{exp.image}}">
+			<img class="fun-img" ng-src="{{exp.image}}">
 			{{exp.title}}
 		</div>
 		<div class="silver-back col-xs-12 big pad-box mt-10 mb-20" ng-show="detail">
