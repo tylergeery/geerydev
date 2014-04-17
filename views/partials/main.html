@@ -1,0 +1,46 @@
+<div ng-include="'partials/headbar'"></div>
+
+<div ng-include="'partials/navbar'"></div>
+
+
+<!-- Section for about content pertaining to ME -->
+<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+
+	
+
+	<div class="col-xs-12 col-sm-9">
+		<h3 class="biggest center">About Me</h3>
+		<p class="bio">
+			I'm a finance enthusiast, a web and mobile developer, life learner, sports fan, and optimistic DO'er. I'm very casual and I pride myself on an easy-going and honest personality.  I work hard to keep a strong work-ethic, open mind, and aspire to make my own Jobsian "dent in the world."  I don't believe in intelligence, I believe in grit and creativity.  And most importantly, I believe the way to truly understand something is to write it on the web in front of 2 billion possible critics.  
+		</p>
+		<p class="bio">
+			With that I should mention.  I'm not sure that I always believe what I say, but I write it here nonetheless.  Helps me think.  Even more so, I appreciate a good argument, so please leave a comment if I get too out of hand.  Or even a little, but please be civilized.
+		</p>
+		<p class="bio">
+			I am open to new opportunities and would appreciate the opportunity to work with you.  Please reach out to me with any questions/comments/concerns.
+		</p>
+		<p class="contact information clear bio">
+			<a href="mailto:tyler.geery@yahoo.com">
+				<img src="images/91cefc0a.mail.png" class="pr-15">Email</a> 
+		</p>
+
+	</div>	
+
+	<div class="col-xs-12 col-sm-3 pull-right m-top">
+		<div class="col-xs-2 col-xs-offset-1 col-sm-12 m40 clarity" ng-repeat="blog in blogs">
+			
+			<div class="point overflow-hidden" ng-click="followBlog(blog._id)">
+				<p class="black-back pad-box white">
+					{{blog.created | date:'dd'}}
+					<br>
+					<span class="search-smaller">{{blog.created | date:'MMM'}}</span>
+				</p>
+				{{blog.question}}
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+
+<div ng-include="'partials/footer'"></div>

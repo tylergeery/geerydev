@@ -1,0 +1,30 @@
+<div class="col-xs-12" ng-controller="NavCtrl">
+	
+	
+	<div class="col-xs-12 col-md-8 navbar quote">
+		<div class="col-xs-3 p-xs-none pointer">
+			<a class="head-nav pointer" ng-click="showNav=!showNav">
+				<img class="pointer" src="images/2c29248d.nav-icon.png">
+			</a>
+		</div>
+		
+		<div class="col-xs-3 p-xs-none pointer ani-nav" ng-hide="!showNav">
+			<a class="full-width support-nav" href="/requests">
+				<img class="deux" src="images/03980826.blog.png">
+			</a>
+		</div>
+		<div class="col-xs-3 p-xs-none pointer ani-nav-deux" ng-hide="!showNav">
+			<a class="full-width support-nav" href="/portfolio">
+				<img class="un" src="images/ef9707c1.portfolio.png">
+			</a>
+		</div>
+		<div class="col-xs-3 p-xs-none pointer ani-nav-tre" ng-hide="!showNav">
+			<a class="full-width support-nav tre" href="/about">
+				<img class="tre" src="images/6526dd7f.about.png">
+			</a>
+		</div>
+		<div ng-hide="showNav" class="col-xs-12 col-sm-9 col-lg-9 ani-quote">
+			<p>{{quote.content}}<br> <span class="quote-darker">- {{quote.author}}</span></p>
+		</div>
+	</div>
+</div>
