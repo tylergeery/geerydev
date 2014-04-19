@@ -7,31 +7,25 @@
 <div class="col-xs-12">
 
 	<!-- These are the filterable options for the home page -->
-	<div class="col-xs-12 double mb-20 pt-15" ng-class="{'puke':question, 'green':information, 'nasty':filter}">
+	<div class="double mb-20 pt-15" ng-class="{'puke':question, 'green':information, 'nasty':filter}">
 		<p class="black-back white" ng-show="success">{{success}}</p>
 		<div class="silver-back round pull-right double center hover-black point min-h100 max33" ng-click="question=false; information=!information; filter=false;">i</div>
 		<div class="silver-back round pull-right double center hover-black point min-h100 max33" ng-click="information=false; question=!question; filter=false;">?</div>
 		<div class="silver-back round pull-right double center hover-black point min-h100 max33" ng-click="question=false; information=false; filter=!filter;">+</div>
-		<div class="lh-100 bold">
-			Filter:
-			<select ng-init="option=filterOptions[1]" ng-model="option" ng-change="useFilter(option.use)" ng-options="option.name for option in filterOptions"></select>
-			<!-- <button ng-click="useFilter('totalComments')">Comments</button> -->
-			<!-- <button ng-click="useFilter('created')">Recent</button> -->
-			<!-- <button ng-click="useFilter('random')">Mystery</button> -->
-		</div>
+		
 		<div class="form-group px16" ng-show="filter">
 			Get Emails for New posts...		
 			<input class="form-control subscribe" type="text" ng-model="subscriberEmail" placeholder="Email" ng-click="subscribe()">
-			<button class="subscribe-button" ng-click="subscribe()">Subscribe</button>
+			<button class="subscribe-button" ng-class="{'dark-black':subscriberEmail.length}" ng-click="subscribe()">Subscribe</button>
 		</div>
 		<div class="form-group px16" ng-show="question">
+			Provoke me...
 			<textarea class="min300 form-control dubs" placeholder="Ask me a question..." ng-model="blog.question"></textarea>
 			<input class="form-control m10" type="text" ng-model="blog.name" placeholder="Anonymous">
 			<input class="form-control m10" type="text" ng-model="blog.email" placeholder="Email (Optional)">
 			<input class="form-control silver-back" type="submit" value="Ask" ng-click="setPost()">
 		</div>
-		<div class="laws clear px16" ng-show="information">
-
+		<div class="laws px16" ng-show="information">
 			<div class="col-xs-2 flag-pic">
 				<img src="images/1ef279e9.flag.png">
 			</div>
@@ -49,17 +43,21 @@
 				</ul>
 			</div>
 		</div>
+		<div class="lh-100 bold special" ng-class="{'clear white-back': question || filter || information}">
+			Filter:
+			<select ng-init="option=filterOptions[1]" ng-model="option" ng-change="useFilter(option.use)" ng-options="option.name for option in filterOptions"></select>
+			<!-- <button ng-click="useFilter('totalComments')">Comments</button> -->
+			<!-- <button ng-click="useFilter('created')">Recent</button> -->
+			<!-- <button ng-click="useFilter('random')">Mystery</button> -->
+		</div>
 	</div>
-	<div class="col-xs-12 col-sm-6 col-md-8" ng-show="showInfo">
-		<!-- This is the place for the rules of the land, what is accepted, whats not -->
-		These are the rules of Tyler's Blog. Deal with em
-	</div>
+	
 
 
 	<!-- All Blog Posts are layed out in a nice and simple fashion -->
 	<div class="blog-sum point clear" ng-repeat="blog in blogs">
 		<div class="blog-sum-back" ng-click="followBlog(blog._id)">
-			<div class="col-xs-6 col-xs-offset-3 col-sm-1 col-sm-offset-0 black-back center white blog-date max_w_150">
+			<div class="col-sm-1 black-back center white blog-date max-w-150">
 				{{blog.created | date:'dd'}}
 				<br>
 				<span class="search-smaller">{{blog.created | date:'MMM'}}</span>
