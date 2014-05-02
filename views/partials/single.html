@@ -18,8 +18,7 @@
 	</div>
 	<h2 class="col-xs-12 col-sm-10 single-question-headline"> {{single.question}} </h2>
 </div>
-<div class="col-xs-12 col-sm-9 single black mt-20 bigger response" ng-bind-html="single.response | unsafe">
-</div>
+<div class="col-xs-12 col-sm-9 single black mt-20 bigger response" ng-bind-html="single.response | unsafe"></div>
 <div class="col-xs-12 col-sm-9 double black point clearfix mt-40 comment-container form" ng-init="leaveComment=false" ng-class="{'silver-back': leaveComment}">
 	<div class="point" ng-click="leaveComment=!leaveComment">
 		<span class="black-back round white rl-p10 center" ng-show="!leaveComment">+</span>
@@ -37,9 +36,11 @@
 	</div>
 	<div class="col-xs-12 col-sm-offset-1 col-sm-9 form-group" ng-show="leaveComment">
 		<label for="content">Reply</label>
-		<textarea class="form-control white-back min300" id="content" ng-model="reply.content">
+		<textarea class="form-control white-back min300" id="content" ng-model="reply.content"></textarea>
 	</div>
-	<div class="col-xs-12 error" ng-show="leaveComment && replyWarning && !reply.content">{{replyWarning}}</div>
+	<div class="col-xs-12 error" ng-show="showError()">
+		{{replyWarning}}
+	</div>
 	<div class="col-xs-12 form-group mt-20" ng-show="leaveComment">
 		<input type="submit" class="form-control white-back" id="enter" ng-click="submitReply()" value="Submit Reply">
 	</div>
@@ -75,9 +76,9 @@
 			</div>
 			<div>
 				<label for="content{{$index}}">Reply</label>
-				<textarea class="form-control white-back" id="content{{$index}}" ng-model="reply.content">
+				<textarea class="form-control white-back" id="content{{$index}}" ng-model="reply.content"></textarea>
 			</div>
-			<div class="col-xs-12 error" ng-show="leaveComment && replyWarning && !reply.content">{{replyWarning}}	</div>
+			<div class="col-xs-12 error" ng-show="showError()">{{replyWarning}}	</div>
 			<div class="half mt-10">
 				<input type="submit" class="form-control white-back" id="enter{{$index}}" ng-click="submitReply(comment._id, comment.responseHead)" value="Reply">
 			</div>
