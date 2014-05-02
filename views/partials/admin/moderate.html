@@ -103,4 +103,44 @@
 	</table>
 </div>
 
-	
+
+<!-- This is the section for moderation of projects -->
+<!-- This will need CRUD ability -->
+<div class="col-xs-12" ng-show="showProjects">
+	<h2 class="text-muted">Projects</h2>
+	<table>
+		<tr>
+			<th class="pad-box">ID</th>
+			<th class="pad-box">Name</th>
+			<th class="pad-box">Content</th>
+			<th class="pad-box">Email</th>
+			<th class="pad-box">Created</th>
+			<th class="pad-box">Delete</th>
+		</tr>
+		<tr ng-repeat="c in activeComments">
+			<td class="pad-box">{{c._id}}</td>
+			<td class="pad-box">{{c.name}}</td>
+			<td class="pad-box">{{c.content}}</td>
+			<td class="pad-box">{{c.email}}</td>
+			<td class="pad-box">{{c.created | date:'mediumDate'}}</td>
+			<td class="pad-box point"><span class="red-delete center max50" ng-click="deleteComment(c._id)">-</span></td>
+		</tr>
+	</table>
+</div>
+
+
+<!-- This is the section for listing of subscribers -->
+<!-- To be honest, you don't even need CRUD ability here -->
+<div class="col-xs-12" ng-show="showSubscribers">
+	<h2 class="text-muted">Subscribers</h2>
+	<table>
+		<tr>
+			<th class="pad-box">Email</th>
+			<th class="pad-box">Date</th>
+		</tr>
+		<tr ng-repeat="s in subscribers">
+			<td class="pad-box">{{s.email}}</td>
+			<td class="pad-box">{{s.created}}</td>
+		</tr>
+	</table>
+</div>

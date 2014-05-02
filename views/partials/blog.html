@@ -16,7 +16,7 @@
 		<div class="form-group px16" ng-show="filter">
 			Get Emails for New posts...		
 			<input class="form-control subscribe" type="text" ng-model="subscriberEmail" placeholder="Email" ng-click="subscribe()">
-			<button class="subscribe-button" ng-class="{'dark-black':subscriberEmail.length}" ng-click="subscribe()">Subscribe</button>
+			<button class="subscribe-button" ng-class="{'dark-black': subscriberEmail.length > 0}" ng-click="subscribe()">Subscribe</button>
 		</div>
 		<div class="form-group px16" ng-show="question">
 			Provoke me...
