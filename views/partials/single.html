@@ -25,16 +25,16 @@
 		<span class="black-back round white rl-p10 center" ng-show="leaveComment">-</span>
 		<span class="rl-p10">Click to Reply</span>
 	</div>
-	<div class="col-xs-12 col-sm-offset-1 col-sm-7 form-group mt-20" ng-show="leaveComment">
+	<div class="col-xs-12 col-sm-offset-1 col-sm-7 form-group mt-20 boom" ng-show="leaveComment" ng-animate="'boom'">
 		<label for="name">Name</label>
 		<input type="text" class="form-control white-back" id="name" ng-model="reply.name" placeholder="Anonymous">
 	</div>
-	<div class="col-xs-12 col-sm-offset-1 col-sm-7 form-group" ng-show="leaveComment">
+	<div class="col-xs-12 col-sm-offset-1 col-sm-7 form-group boom" ng-show="leaveComment" ng-animate="'boom'">
 		<label for="email">Email</label>
 		<input type="email" class="form-control white-back" id="email" ng-model="reply.email">
 		<p class="info">Will only be used to notify you of replies</p>
 	</div>
-	<div class="col-xs-12 col-sm-offset-1 col-sm-9 form-group" ng-show="leaveComment">
+	<div class="col-xs-12 col-sm-offset-1 col-sm-9 form-group boom" ng-show="leaveComment" ng-animate="'boom'">
 		<label for="content">Reply</label>
 		<textarea class="form-control white-back min300" id="content" ng-model="reply.content"></textarea>
 	</div>
@@ -64,7 +64,7 @@
 			{{comment.created | date:'medium'}} - {{comment.name}} 
 			- <span class="comments-total point" ng-init="showSub=false" ng-click="leaveComment=!leaveComment">Reply</span>
 		</div>
-		<div class="col-xs-12 col-sm-11 col-sm-offset-1 comment-container silver-back pad-box clear" ng-show="	leaveComment">
+		<div class="col-xs-12 col-sm-11 col-sm-offset-1 comment-container silver-back pad-box clear box" ng-show="leaveComment" ng-animate="'box'">
 			<div>
 				<label for="name{{$index}}">Name</label>
 				<input type="text" class="form-control white-back" id="name{{$index}}" ng-model="reply.name" placeholder="Anonymous">

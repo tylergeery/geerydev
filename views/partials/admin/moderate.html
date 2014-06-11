@@ -110,21 +110,55 @@
 	<h2 class="text-muted">Projects</h2>
 	<table>
 		<tr>
-			<th class="pad-box">ID</th>
-			<th class="pad-box">Name</th>
-			<th class="pad-box">Content</th>
-			<th class="pad-box">Email</th>
-			<th class="pad-box">Created</th>
-			<th class="pad-box">Delete</th>
+			<th class="pad-box">Image</th>
+			<th class="pad-box">Title</th>
+			<th class="pad-box">Type</th>
+			<th class="pad-box">Link</th>
+			<th class="pad-box">Detail</th>
 		</tr>
-		<tr ng-repeat="c in activeComments">
-			<td class="pad-box">{{c._id}}</td>
-			<td class="pad-box">{{c.name}}</td>
-			<td class="pad-box">{{c.content}}</td>
-			<td class="pad-box">{{c.email}}</td>
-			<td class="pad-box">{{c.created | date:'mediumDate'}}</td>
-			<td class="pad-box point"><span class="red-delete center max50" ng-click="deleteComment(c._id)">-</span></td>
+		<tr ng-repeat="p in projects">
+			<td class="pad-box"><img ng-src="p.image"></td>
+			<td class="pad-box">
+				<input type="hidden" ng-model="p._id">
+				<input type="text" ng-model="p.title">
+			</td>
+			<td class="pad-box">
+				<select ng-model="p.type">
+					<option value="web">Web</option>
+					<option value="mobile">Mobile</option>
+					<option value="finance">Finance</option>
+				</select>
+			</td>
+			<td class="pad-box">
+				<input type="text" ng-model="p.link">
+			</td>
+			<td>
+				<textarea class="pad-box" ng-model="p.detail"></textarea>
+			</td>
+			<td class="pad-box point"><span class="center max50" ng-click="saveProject(p)">Save</span></td>
+			<td class="pad-box point"><span class="center max50" ng-click="deleteProject(p)">Delete</span></td>
 		</tr>
+		<tr>
+			<td class="pad-box">+ New Post</td>
+			<td class="pad-box">
+				<input type="text" ng-model="newProject.title">
+			</td>
+			<td class="pad-box">
+				<select ng-model="newProject.type">
+					<option value="web">Web</option>
+					<option value="mobile">Mobile</option>
+					<option value="finance">Finance</option>
+				</select>
+			</td>
+			<td class="pad-box">
+				<input type="text" ng-model="newProject.link">
+			</td>
+			<td>
+				<textarea class="pad-box" ng-model="newProject.detail"></textarea>
+			</td>
+			<td class="pad-box point"><span class="center max50" ng-click="saveProject(newProject); newProject={};">Create</span></td>
+		</tr>
+
 	</table>
 </div>
 
