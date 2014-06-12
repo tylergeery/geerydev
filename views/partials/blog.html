@@ -56,7 +56,7 @@
 
 	<!-- All Blog Posts are layed out in a nice and simple fashion -->
 	<div class="blog-sum point clear" ng-repeat="blog in blogs">
-		<div class="blog-sum-back" ng-click="followBlog(blog._id)">
+		<a class="blog-sum-back" ng-href="requests/{{blog._id}}">
 			<div class="col-sm-1 black-back center white blog-date max-w-150">
 				{{blog.created | date:'dd'}}
 				<br>
@@ -74,7 +74,7 @@
 			<div class="col-xs-1 full-height hide-small">
 				<img src="images/a33e0727.blog-show.png" class="full-image">
 			</div>
-		</div>	
+		</a>	
 	</div>
 	
 </div>
