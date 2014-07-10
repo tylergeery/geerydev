@@ -50,7 +50,7 @@
 	<p class="double text-muted">Comments</p>
 </div>
 
-<div id="comments" class="single-comments col-xs-12 col-sm-offset-1 col-sm-10 double-indent" ng-repeat="comment in comments" ng-class="{'indent': comment.responseTo == comment.responseHead, 'overwrite': comment._id == comment.responseHead}" ng-mouseover="$root.setFollow(comment.responseTo)">
+<div id="comments" class="single-comments col-xs-12 col-sm-offset-1 col-sm-8 double-indent" ng-repeat="comment in comments" ng-class="{'indent': comment.responseTo == comment.responseHead, 'overwrite': comment._id == comment.responseHead}" ng-mouseover="$root.setFollow(comment.responseTo)">
 	<div class="float-left">
 			<img class="point shooter" src="images/1ca9ae8c.point.png" ng-click="submitLike(comment) ">
 			<br>
