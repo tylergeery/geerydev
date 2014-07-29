@@ -7,7 +7,7 @@
   	<img class="cloud" src="images/1df8f9b6.clouds.png">
   	<div class="cloud-search-holder">
   		<input class="cloud-search weak" placeholder="Tyler search" ng-model="query" ng-change="research()">
-  		<div class="search-results absolute" ng-show="results.length">
+  		<div class="search-results absolute" ng-show="query.length">
   			<div class="search-result point" ng-repeat="res in results" ng-click="followBlog(res._id)">
   				<span class="jumbo-date inline">
   					{{res.created | date:'dd'}}
