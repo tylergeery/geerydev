@@ -290,3 +290,7 @@
 {"name":"newrelic","hostname":"Tylers-MacBook-Pro.local","pid":6968,"component":"mongodb","level":10,"msg":"MongoDB query trace segment ended for sessions: end of batch.","time":"2014-11-18T07:27:14.699Z","v":0}
 {"name":"newrelic","hostname":"Tylers-MacBook-Pro.local","pid":6968,"component":"error_tracer","level":20,"error":[0,"WebTransaction/Expressjs/GET//*","HttpError 500","Error",{"userAttributes":{},"agentAttributes":{},"intrinsics":{},"request_uri":"/"}],"msg":"Error to be sent to collector:","time":"2014-11-18T07:27:14.700Z","v":0}
 {"name":"newrelic","hostname":"Tylers-MacBook-Pro.local","pid":6968,"component":"mongodb","level":10,"msg":"Tracing MongoDB sessions.update({\"_id\":\"9gTZnZOS0suLi9LQemadu1WG\"}) ended for transaction 1342.","time":"2014-11-18T07:27:14.700Z","v":0}
+{"v":0,"level":10,"name":"newrelic","hostname":"Tylers-MacBook-Pro.local","pid":9333,"time":"2015-10-14T20:40:44.715Z","msg":"Using New Relic for Node.js version 1.22.1."}
+{"v":0,"level":20,"name":"newrelic","hostname":"Tylers-MacBook-Pro.local","pid":9333,"time":"2015-10-14T20:40:44.718Z","msg":"Loading agent from /Users/tylergeery/Documents/geerydev/node_modules/newrelic"}
+{"v":0,"level":10,"name":"newrelic","hostname":"Tylers-MacBook-Pro.local","pid":9629,"time":"2015-10-14T20:44:39.071Z","msg":"Using New Relic for Node.js version 1.22.1."}
+{"v":0,"level":20,"name":"newrelic","hostname":"Tylers-MacBook-Pro.local","pid":9629,"time":"2015-10-14T20:44:39.073Z","msg":"Loading agent from /Users/tylergeery/Documents/geerydev/node_modules/newrelic"}
