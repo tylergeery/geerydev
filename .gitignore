@@ -1,3 +1,4 @@
-newrelic_agent.log
+*.hot-update.js
+*.hot-update.json
 npm-debug.log
 node_modules/

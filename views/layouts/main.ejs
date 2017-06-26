@@ -1,0 +1,45 @@
+<!doctype html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title><%- title %></title>
+    <meta name="description" content="Tyler Geery's personal blog for developers, enthusiasts, people with interests.  Rants about geerydev feelings and anything else that comes up.">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/2e68dc9e.vendor.css"/>
+    <link rel="stylesheet" href="styles/85d6a0ef.main.css"/>
+  </head>
+<body>
+
+    <!-- Add your site or application content here -->
+    <div class="geery" id="geerydev-container">
+        <div>
+            <%= include ../partials/headbar %>
+        </div>
+
+        <div>
+            <%= include ../partials/navbar %>
+        </div>
+
+        <%- content %>
+    </div>
+
+    <%= include ../partials/footer %>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-49174523-1', 'geerydev.com');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- Add JS files here -->
+    <script type="text/javascript" src="bundle.js" async></script>
+</body>
+</html>
