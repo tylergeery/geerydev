@@ -8,28 +8,4 @@
 
 <div class="col-xs-12" id="geerydev-posts">
 	<!-- All Blog Posts are layed out in a nice and simple fashion -->
-	<div class="blog-sum point clear" ng-repeat="blog in blogs">
-		<a class="blog-sum-back" ng-href="requests/{{blog._id}}">
-			<div class="col-sm-1 black-back center white blog-date max-w-150">
-				{{blog.created | date:'dd'}}
-				<br>
-				<span class="search-smaller">{{blog.created | date:'MMM'}}</span>
-			</div>
-			<div class="col-xs-12 col-sm-10">
-				<h2 class="blog-title black">
-					{{blog.question}}
-				</h2>
-				<p class="text-muted bigger">
-					Asked By: {{blog.askedBy}} - {{blog.created | date:'mediumDate'}} -
-					<span class="comments-total">{{blog.totalComments}} Comments </span>
-				</p>
-			</div>
-			<div class="col-xs-1 full-height hide-small">
-				<img src="images/a33e0727.blog-show.png" class="full-image">
-			</div>
-		</a>
-	</div>
-
 </div>
-
-<div ng-include="'partials/footer'"></div>

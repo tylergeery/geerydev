@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-// import { setVisibilityFilter } from '../actions'
+
 import HeadBar from '../components/HeadBar'
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,9 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    // onClick: () => {
-    //   dispatch(setVisibilityFilter(ownProps.filter))
-    // }
+
   }
 }
 

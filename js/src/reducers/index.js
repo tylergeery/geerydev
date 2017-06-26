@@ -57,6 +57,14 @@ export default function(state, action) {
             newState.searchResults = action.searchResults;
 
             return newState;
+        case 'SET_ACTIVE_PANEL':
+            newState.activePanel = action.panel;
+
+            return newState;
+        case 'FETCH_POST_LIST':
+            newState.posts = action.posts;
+
+            return newState;
     }
 
     return state;

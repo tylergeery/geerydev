@@ -1,17 +1,17 @@
 var months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
+    'January',
+    'February',
+    'March',
+    'April',
     'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-]
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+];
 
 export default {
     /**
@@ -24,7 +24,7 @@ export default {
         let date = new Date(Date.parse(iso8601));
 
         return [
-            months[date.getMonth() - 1],
+            months[date.getMonth() - 1].substring(0, 3),
             date.getFullYear().toString().substr(-2)
         ].join(' ');
     },
@@ -39,5 +39,21 @@ export default {
         let date = new Date(Date.parse(iso8601));
 
         return date.getDay().toString();
+    },
+
+    /**
+     * Convert ISO 8601 date standard to day
+     *
+     * @param {string} iso8601
+     * @return {string} day of date
+     */
+    iso8601ToFullReadable(iso8601) {
+        let date = new Date(Date.parse(iso8601));
+
+        return [
+            months[date.getMonth() - 1],
+            date.getDay() + ',',
+            date.getFullYear()
+        ].join(' ');
     }
 }

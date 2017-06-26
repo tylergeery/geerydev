@@ -10,10 +10,10 @@ export default class Panel extends React.Component {
             {this.props.panelSuccess
                 ? <p className="black-back white">this.props.panelSuccess</p>
                 : ''
-            }}
-            <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick="question=false; information=!information; filter=false;">i</div>
-            <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick="information=false; question=!question; filter=false;">?</div>
-            <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick="question=false; information=false; filter=!filter;">+</div>
+            }
+            <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick={this.props.onTypeClick.bind(this, 'information')}>i</div>
+            <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick={this.props.onTypeClick.bind(this, 'question')}>?</div>
+            <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick={this.props.onTypeClick.bind(this, 'filter')}>+</div>
 
             <form onSubmit={this.props.subscribe} className={classNames("form-group px16", {'hide': this.props.activePanel !== 'filter'})}>
                 Get Emails for New posts...
@@ -45,9 +45,9 @@ export default class Panel extends React.Component {
                     </ul>
                 </div>
             </div>
-            <div class="lh-100 bold special" ng-class="{'clear white-back': question || filter || information}">
-                Filter:
-                <select name="filter">
+            <div className={classNames("lh-100 bold special", {'clear white-back': this.props.activePanel})}>
+                Sort:
+                <select name="sort" onSelect={this.props.onSortSelect}>
                     {this.props.panelFilters.map(function(filter, i) {
                         return <option key={i} value={filter.value} selected={filter.selected ? true : null}>{filter.value}</option>
                     })}

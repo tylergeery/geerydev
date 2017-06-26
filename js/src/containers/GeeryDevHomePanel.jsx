@@ -13,7 +13,17 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onTypeClick: (panel) => {
-      dispatch(panelActions.toggleActivePanel(panel))
+        dispatch(panelActions.toggleActivePanel(panel))
+    },
+    onSortSelect: (event) => {
+        debugger;
+        dispatch(postActions.getPostList(event.target.value))
+    },
+    ask: () => {
+        // TODO
+    },
+    subscribe: () => {
+        // TODO
     }
   }
 }
