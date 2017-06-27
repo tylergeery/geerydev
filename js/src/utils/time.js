@@ -13,7 +13,7 @@ var months = [
     'December'
 ];
 
-export default {
+module.exports = {
     /**
      * Convert ISO 8601 date standard to pretty format
      *
@@ -21,7 +21,7 @@ export default {
      * @param {boolean} fullYear
      * @return {string} date in pretty format
      */
-    iso8601ToPretty(iso8601, fullYear) {
+    iso8601ToPretty: function(iso8601, fullYear) {
         let date = new Date(Date.parse(iso8601));
 
         return [
@@ -37,7 +37,7 @@ export default {
      * @param {boolean} fullDay
      * @return {string} day of date
      */
-    iso8601ToDay(iso8601, fullDay) {
+    iso8601ToDay: function(iso8601, fullDay) {
         let day = (new Date(Date.parse(iso8601))).getDay();
 
         return fullDay ? day + this.getDayEnding(day) : day;
@@ -49,7 +49,7 @@ export default {
      * @param {string} iso8601
      * @return {string} day of date
      */
-    iso8601ToFullReadable(iso8601) {
+    iso8601ToFullReadable: function(iso8601) {
         let date = new Date(Date.parse(iso8601));
 
         return [
@@ -59,7 +59,7 @@ export default {
         ].join(' ');
     },
 
-    getDayEnding(day) {
+    getDayEnding: function(day) {
         let ending = '';
 
         if (day > 0 && day <= 31)  {

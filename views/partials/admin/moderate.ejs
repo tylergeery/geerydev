@@ -61,7 +61,7 @@
 	</div>
 	<div>
 		<input type="submit" class="form-control silver-back" value="Save Post" ng-click="setPost()">
-	</div>	
+	</div>
 
 </div>
 
@@ -74,13 +74,13 @@
 	</h2>
 	<p class="text-muted black-back post-pad point" ng-click="makeEmptyPost()">
 		Make a new post & question
-		<span class="pull-right blue-add">+</span> 
+		<span class="pull-right blue-add">+</span>
 	</p>
 	<div class="text-muted" ng-repeat="post in posts">
 		<p ng-class="{'silver-back':post.response}" class="silver-back post-pad point" ng-click="makePost(post)">
 			{{post.question}} - {{post.created | date:'mediumDate'}}
-			<span class="pull-right blue-add" ng-if="toDo=='add'">+</span> 
-			<span class="pull-right red-delete" ng-if="toDo=='delete'" ng-click="deletePost($index)">-</span> 
+			<span class="pull-right blue-add" ng-if="toDo=='add'">+</span>
+			<span class="pull-right red-delete" ng-if="toDo=='delete'" ng-click="deletePost($index)">-</span>
 		</p>
 	</div>
 </div>

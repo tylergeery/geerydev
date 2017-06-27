@@ -1,15 +1,21 @@
 <div id="geerydev-side-panel" class="right col-sm-3 hide-small absolute top250">
 </div>
 
-<div class="single-question col-xs-12 col-sm-9" scroll-position="scroll">
+<div class="single-question col-xs-12 col-sm-9">
 	<div class="col-sm-2 black-back center white blog-date double max-w-150">
-		{{single.created | date:'dd'}}
-		<br>
-		<span class="search-smaller">{{single.created | date:'MMM'}}</span>
+		<%= dayString %>
+		<br />
+		<span class="search-smaller"><%= dateString %></span>
 	</div>
-	<h2 class="col-xs-12 col-sm-10 single-question-headline"> {{single.question}} </h2>
+	<h2 class="col-xs-12 col-sm-10 single-question-headline">
+        <%- request %>
+    </h2>
 </div>
-<div class="col-xs-12 col-sm-9 single black mt-20 bigger response" ng-bind-html="single.response | unsafe"></div>
+<div class="col-xs-12 col-sm-9 single black mt-20 bigger response">
+    <%- response %>
+</div>
+
+<!-- Start comment section -->
 <div class="col-xs-12 col-sm-9 double black point clearfix mt-40 comment-container form" ng-init="leaveComment=false" ng-class="{'silver-back': leaveComment}">
 	<div class="point" ng-click="leaveComment=!leaveComment">
 		<span class="black-back round white rl-p10 center" ng-show="!leaveComment">+</span>
