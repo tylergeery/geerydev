@@ -1,15 +1,6 @@
-<div ng-include="'partials/headbar'"></div>
-<div class="right col-sm-3 hide-small" ng-class="{'fixed top0': scroll > 250, 'absolute top250': scroll <= 250}">
-	<h3 class="strategic black-back white pad-box small-radius">Popular Posts</h3>
-	<div class="point black-border-bottom pad-box overflow-hidden" ng-repeat="s in sideStuffers" ng-click="followBlog(s._id)">
- 		{{s.question | limitTo:40}}...
-  		<div class="pull-right white black-back small-radius cal-date-box">
-  			{{s.created | date:'dd'}}
-  			<br>
-  			{{s.created | date:'MMM'}}
-  		</div>  	
-	</div>
+<div id="geerydev-side-panel" class="right col-sm-3 hide-small absolute top250">
 </div>
+
 <div class="single-question col-xs-12 col-sm-9" scroll-position="scroll">
 	<div class="col-sm-2 black-back center white blog-date double max-w-150">
 		{{single.created | date:'dd'}}
@@ -61,7 +52,7 @@
 	</p>
 	<p class="clear">
 		<div class="text-muted">
-			{{comment.created | date:'medium'}} - {{comment.name}} 
+			{{comment.created | date:'medium'}} - {{comment.name}}
 			- <span class="comments-total point" ng-init="showSub=false" ng-click="leaveComment=!leaveComment">Reply</span>
 		</div>
 		<div class="col-xs-12 col-sm-11 col-sm-offset-1 comment-container silver-back pad-box clear box" ng-show="leaveComment" ng-animate="'box'">
@@ -84,8 +75,5 @@
 			</div>
 		</div>
 	</p>
-	
+
 </div>
-
-
-<div ng-include="'partials/footer'"></div>

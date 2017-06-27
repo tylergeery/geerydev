@@ -18,14 +18,15 @@ export default {
      * Convert ISO 8601 date standard to pretty format
      *
      * @param {string} iso8601
+     * @param {boolean} fullYear
      * @return {string} date in pretty format
      */
-    iso8601ToPretty(iso8601) {
+    iso8601ToPretty(iso8601, fullYear) {
         let date = new Date(Date.parse(iso8601));
 
         return [
             months[date.getMonth() - 1].substring(0, 3),
-            date.getFullYear().toString().substr(-2)
+            fullYear ? date.getFullYear() : date.getFullYear().toString().substr(-2)
         ].join(' ');
     },
 
@@ -33,12 +34,13 @@ export default {
      * Convert ISO 8601 date standard to day
      *
      * @param {string} iso8601
+     * @param {boolean} fullDay
      * @return {string} day of date
      */
-    iso8601ToDay(iso8601) {
-        let date = new Date(Date.parse(iso8601));
+    iso8601ToDay(iso8601, fullDay) {
+        let day = (new Date(Date.parse(iso8601))).getDay();
 
-        return date.getDay().toString();
+        return fullDay ? day + this.getDayEnding(day) : day;
     },
 
     /**
@@ -55,5 +57,31 @@ export default {
             date.getDay() + ',',
             date.getFullYear()
         ].join(' ');
+    },
+
+    getDayEnding(day) {
+        let ending = '';
+
+        if (day > 0 && day <= 31)  {
+            switch (day) {
+                case 1:
+                case 21:
+                case 31:
+                    ending = 'st';
+                    break;
+                case 2:
+                case 22:
+                    ending = 'nd';
+                    break;
+                case 3:
+                case 23:
+                    ending = 'rd';
+                    break;
+                default:
+                    ending = 'th';
+            }
+        }
+
+        return ending;
     }
 }

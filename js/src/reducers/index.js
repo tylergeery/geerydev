@@ -23,18 +23,23 @@ let initialState = {
    activePanel: '',
    panelFilters: [
        {
-           value: 'Comments',
-           active: false
+           active: false,
+           name: 'Comments',
+           value: 'comments'
        },
        {
-           value: 'Recent',
-           active: true
+           active: true,
+           name: 'Recent',
+           value: 'created'
        },
        {
-           value: 'Mystery',
-           active: false
+           active: false,
+           name: 'Mystery',
+           value: 'mystery'
        }
-   ]
+   ],
+   projects: [],
+   sidePanelPosts: []
 };
 
 export default function(state, action) {
@@ -63,6 +68,14 @@ export default function(state, action) {
             return newState;
         case 'FETCH_POST_LIST':
             newState.posts = action.posts;
+
+            return newState;
+        case 'FETCH_PROJECT_LIST':
+            newState.projects = action.projects;
+
+            return newState;
+        case 'FETCH_SIDE_PANEL_POSTS':
+            newState.sidePanelPosts = action.posts;
 
             return newState;
     }

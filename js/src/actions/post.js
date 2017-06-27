@@ -13,5 +13,19 @@ export default {
                     });
                 });
         }
+    },
+
+    getSideBarPosts() {
+        return function(dispatch) {
+            fetch('/api/blogs?sort=mystery&limit=5')
+                .then(function(response) {
+                    response.json().then(function(postList) {
+                        dispatch({
+                            type: 'FETCH_SIDE_PANEL_POSTS',
+                            posts: postList
+                        });
+                    });
+                });
+        }
     }
 };

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 // import { setVisibilityFilter } from '../actions'
 import NavBar from '../components/NavBar'
-import navActions from '../actions/navbar'
+import generalActions from '../actions/general'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onNavClick: () => {
-      dispatch(navActions.setShowNav(!ownProps.showNav))
+      dispatch(generalActions.setShowNav(!ownProps.showNav))
     }
   }
 }

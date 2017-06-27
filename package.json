@@ -24,7 +24,7 @@
     "ejs": "~0.8.4",
     "ejs-layouts": "0.0.1",
     "express": "~3.4.3",
-    "lodash": "~2.4.1",
+    "lodash": "^2.4.2",
     "mongoose": "~4.0.0",
     "mongoose-unique-validator": "~0.3.0",
     "newrelic": "*",
@@ -35,8 +35,8 @@
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.1",
     "redux": "^3.3.1",
-    "redux-thunk": "^2.2.0",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "webpack": "^1.12.14",
     "whatwg-fetch": "^2.0.3"
   },

@@ -257,6 +257,11 @@ ul {
 .mb-20 {
     margin-bottom: 20px
 }
+
+.pl-0 {
+    padding-left: 0;
+}
+
 .pl-15 {
     padding-left: 15px
 }
@@ -525,7 +530,7 @@ ul {
     color: #323232
 }
 .blog-date {
-    padding: 20px;
+    padding: 20px 0;
     margin: 5px 0;
     border-radius: 15px;
     font-size: 1.5em
@@ -745,6 +750,19 @@ ul {
     line-height: 50px;
     font-size: 25px;
     vertical-align: middle
+}
+.project-tab-detail {
+    overflow: hidden;
+    max-height: 1000px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s
+}
+.project-tab-detail.gd-hidden {
+    opacity: 0;
+    max-height: 0;
 }
 .box-hide-setup,
 .box-show-setup {

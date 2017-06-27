@@ -15,17 +15,17 @@ export default class Panel extends React.Component {
             <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick={this.props.onTypeClick.bind(this, 'question')}>?</div>
             <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick={this.props.onTypeClick.bind(this, 'filter')}>+</div>
 
-            <form onSubmit={this.props.subscribe} className={classNames("form-group px16", {'hide': this.props.activePanel !== 'filter'})}>
+            <form onSubmit={this.props.subscribe} className={classNames("form-group px16 pad-box", {'hide': this.props.activePanel !== 'filter'})}>
                 Get Emails for New posts...
                 <input className="form-control subscribe" type="email" placeholder="Email" />
-                <button type="submit" className={classNames("subscribe-button", {'dark-black': this.props.subscriberEmail > 0})}>Subscribe</button>
+                <button type="submit" className="subscribe-button">Subscribe</button>
             </form>
-            <form onSubmit={this.props.ask} className={classNames("form-group px16", {'hide': this.props.activePanel !== 'question'})}>
+            <form onSubmit={this.props.ask} className={classNames("form-group px16 pad-box", {'hide': this.props.activePanel !== 'question'})}>
                 Provoke me...
                 <textarea className="min300 form-control dubs" placeholder="Ask me a question..." ng-model="blog.question"></textarea>
                 <input className="form-control m10" type="text" ng-model="blog.name" placeholder="Anonymous" />
                 <input className="form-control m10" type="text" ng-model="blog.email" placeholder="Email (Optional)" />
-                <button type="submit">Ask</button>
+                <button type="submit" className="subscribe-button">Ask</button>
             </form>
             <div className={classNames("form-group px16", {'hide': this.props.activePanel !== 'information'})}>
                 <div className="col-xs-2 flag-pic">
@@ -47,9 +47,9 @@ export default class Panel extends React.Component {
             </div>
             <div className={classNames("lh-100 bold special", {'clear white-back': this.props.activePanel})}>
                 Sort:
-                <select name="sort" onSelect={this.props.onSortSelect}>
+                <select name="sort" onChange={this.props.onSortSelect} defaultValue="created">
                     {this.props.panelFilters.map(function(filter, i) {
-                        return <option key={i} value={filter.value} selected={filter.selected ? true : null}>{filter.value}</option>
+                        return <option key={i} value={filter.value}>{filter.name}</option>
                     })}
                 </select>
             </div>

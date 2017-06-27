@@ -3,8 +3,12 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        bundle: './js/src/entry/index.js',
-        admin: './js/src/entry/admin.js'
+        index: './js/src/entry/index',
+        portfolio: './js/src/entry/portfolio',
+        about: './js/src/entry/about',
+        common: './js/src/entry/common', // catch-all
+
+        admin: './js/src/entry/admin'
     },
     module: {
         loaders: [{

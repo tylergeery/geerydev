@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import Panel from '../components/Panel';
 import panelActions from '../actions/panel';
+import postActions from '../actions/post';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -16,7 +17,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch(panelActions.toggleActivePanel(panel))
     },
     onSortSelect: (event) => {
-        debugger;
         dispatch(postActions.getPostList(event.target.value))
     },
     ask: () => {
