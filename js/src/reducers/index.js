@@ -39,7 +39,9 @@ let initialState = {
        }
    ],
    projects: [],
-   sidePanelPosts: []
+   sidePanelPosts: [],
+   blogId: null,
+   comments: []
 };
 
 export default function(state, action) {
@@ -51,33 +53,41 @@ export default function(state, action) {
 
     switch (action.type) {
         case 'SET_SHOW_NAV':
-            newState.showNav = !state.showNav;
+            newState.showNav = !state.showNav
 
             return newState;
         case 'INCREMENT_QUOTE':
-            newState.activeQuote = (state.activeQuote + 1) % state.quotes.length;
+            newState.activeQuote = (state.activeQuote + 1) % state.quotes.length
 
             return newState;
         case 'FETCH_POSTS':
-            newState.searchResults = action.searchResults;
+            newState.searchResults = action.searchResults
 
             return newState;
         case 'SET_ACTIVE_PANEL':
-            newState.activePanel = action.panel;
+            newState.activePanel = action.panel
 
             return newState;
         case 'FETCH_POST_LIST':
-            newState.posts = action.posts;
+            newState.posts = action.posts
 
             return newState;
         case 'FETCH_PROJECT_LIST':
-            newState.projects = action.projects;
+            newState.projects = action.projects
 
             return newState;
         case 'FETCH_SIDE_PANEL_POSTS':
-            newState.sidePanelPosts = action.posts;
+            newState.sidePanelPosts = action.posts
 
             return newState;
+        case 'SET_BLOG_ID':
+            newState.blogId = action.blogId
+
+            return newState
+        case 'FETCH_COMMENTS_COMPLETE':
+            newState.comments = action.comments
+
+            return newState
     }
 
     return state;

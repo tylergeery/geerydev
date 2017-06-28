@@ -27,5 +27,12 @@ export default {
                     });
                 });
         }
+    },
+
+    setBlogId(blogId) {
+        return {
+            type: 'SET_BLOG_ID',
+            blogId: blogId
+        }
     }
 };
