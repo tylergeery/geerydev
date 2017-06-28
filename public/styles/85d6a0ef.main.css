@@ -296,7 +296,7 @@ ul {
     padding-left: 15px
 }
 .red {
-    color: red
+    color: #a94442;
 }
 .full-image {
     width: 100%;
@@ -689,17 +689,26 @@ ul {
     border-radius: 10px;
     background: #e5e5e5
 }
-.comment-container:hover {
-    background: #e5e5e5
+
+.comment-container {
+    overflow: hidden;
+    max-height: 1000px;
+    background: #e5e5e5;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s
 }
-.error {
-    color: #2D6F7B;
-    background: #A7EEFA;
-    border: 2px solid #2D6F7B
+
+.comment-form label {
+    width: 100%;
 }
+
 .info {
-    font-size: .4em
+    font-size: 12px;
 }
+
 .highlight {
     background: #e5e5e5
 }
@@ -760,10 +769,12 @@ ul {
     -o-transition: all .3s;
     transition: all .3s
 }
-.project-tab-detail.gd-hidden {
+
+.gd-hidden {
     opacity: 0;
     max-height: 0;
 }
+
 .box-hide-setup,
 .box-show-setup {
     -webkit-transition: all linear .3s;
