@@ -16,7 +16,7 @@ export default class CommentSection extends React.Component {
         		<span className={classNames("black-back round white rl-p10 center", {'hide': !this.state.commenting})}>-</span>
         		<span className="rl-p10">{this.state.commenting ? 'Reply' : 'Click to Reply'}</span>
         	</div>
-            <div className={classNames("comment-container form", {'gd-hidden': !this.state.commenting})}>
+            <div className={classNames("gd-fade-down-in form", {'gd-hidden': !this.state.commenting})}>
                 <CommentForm commentSubmitted={this.closeCommenting.bind(this)}
                         blogId={this.props.blogId} responseTo={this.props.blogId} responseHead={this.props.blogId} />
             </div>
