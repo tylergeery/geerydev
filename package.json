@@ -21,6 +21,7 @@
     "classnames": "^2.2.5",
     "connect-livereload": "*",
     "connect-mongo": "~0.8.2",
+    "crypto": "0.0.3",
     "ejs": "~0.8.4",
     "ejs-layouts": "0.0.1",
     "express": "~3.4.3",
