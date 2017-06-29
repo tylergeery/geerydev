@@ -1,32 +1,23 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import SubscribeForm from './home/SubscribeForm'
+import RequestForm from './home/RequestForm'
+
 export default class Panel extends React.Component {
     render() {
         return <div className={classNames("double mb-20 pt-15", {
                 'puke': this.props.activePanel === 'question',
                 'green': this.props.activePanel === 'information',
                 'nasty': this.props.activePanel === 'filter' })}>
-            {this.props.panelSuccess
-                ? <p className="black-back white">this.props.panelSuccess</p>
-                : ''
-            }
+
             <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick={this.props.onTypeClick.bind(this, 'information')}>i</div>
             <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick={this.props.onTypeClick.bind(this, 'question')}>?</div>
             <div className="silver-back round pull-right double center hover-black point min-h100 max33" onClick={this.props.onTypeClick.bind(this, 'filter')}>+</div>
 
-            <form onSubmit={this.props.subscribe} className={classNames("form-group px16 pad-box", {'hide': this.props.activePanel !== 'filter'})}>
-                Get Emails for New posts...
-                <input className="form-control subscribe" type="email" placeholder="Email" />
-                <button type="submit" className="subscribe-button">Subscribe</button>
-            </form>
-            <form onSubmit={this.props.ask} className={classNames("form-group px16 pad-box", {'hide': this.props.activePanel !== 'question'})}>
-                Provoke me...
-                <textarea className="min300 form-control dubs" placeholder="Ask me a question..." ng-model="blog.question"></textarea>
-                <input className="form-control m10" type="text" ng-model="blog.name" placeholder="Anonymous" />
-                <input className="form-control m10" type="text" ng-model="blog.email" placeholder="Email (Optional)" />
-                <button type="submit" className="subscribe-button">Ask</button>
-            </form>
+            <SubscribeForm activePanel={this.props.activePanel} />
+            <RequestForm activePanel={this.props.activePanel} />
+
             <div className={classNames("form-group px16", {'hide': this.props.activePanel !== 'information'})}>
                 <div className="col-xs-2 flag-pic">
                     <img src="images/1ef279e9.flag.png" />

@@ -411,9 +411,9 @@ ul {
 .puke div:not(.special) {
     padding: 1px 15px
 }
-.green .min-h100:nth-child(2),
-.nasty .min-h100:nth-child(4),
-.puke .min-h100:nth-child(3) {
+.green .min-h100:nth-child(1),
+.nasty .min-h100:nth-child(3),
+.puke .min-h100:nth-child(2) {
     background: #fff
 }
 .overflow-hidden {
@@ -738,7 +738,7 @@ ul {
 }
 .single-comment {
     padding: 5px;
-    margin-left: 10px
+    padding-left: 10px
 }
 .single-comment:hover {
     background: #e5e5e5;
@@ -1030,4 +1030,8 @@ ul {
     .gdhide {
         display: none !important;
     }
+}
+
+.required {
+    background: #ffbcbb!important;
 }

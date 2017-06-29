@@ -1,3 +1,7 @@
+import 'whatwg-fetch';
+import storage from '../utils/storage'
+import formData from '../utils/formData'
+
 export default {
 
     getComments(blogId) {
@@ -15,21 +19,47 @@ export default {
     },
 
     submitComment(comment) {
-        let formData = FormData()
-        let self = this
-
-        _.forOwn(comment, function(value, prop) {
-            formData.append(prop, value)
-        })
-
-        return function(dispatch) {
-            fetch('/api/comments', {
+        return (dispatch) => {
+            return fetch('/api/comments', {
                 method: 'POST',
-                body: formData
+                body: formData.getFromObject(comment)
             })
-                .then(function(response) {
-                    dispatch(self.getComments(comment.blogId))
+                .then((response) => {
+                    dispatch(this.getComments(comment.blogId))
                 })
         }
-    }
+    },
+
+    likeComment(comment) {
+        const commentKey = 'like:' + comment._id
+
+        if (storage.getKey(commentKey)) {
+            // simulate complete
+            return {
+                type: 'LIKE_COMMENT_COMPLETE'
+            }
+        }
+
+        storage.setKey(commentKey, 1)
+
+        return (dispatch) => {
+            fetch('/api/comments/like/' + comment._id)
+                .then(() => {
+                    dispatch(this.getComments(comment.blogId))
+                })
+        }
+    },
+
+    remove(id, blogId) {
+        return (dispatch) => {
+            return fetch('/api/comments/' + id, {
+                method: 'DELETE'
+            })
+                .then((response) => {
+                    if (blogId) {
+                        dispatch(this.getComments(blogId))
+                    }
+                })
+        }
+    },
 }

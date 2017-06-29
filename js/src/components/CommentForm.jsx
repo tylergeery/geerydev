@@ -2,13 +2,13 @@ import React from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 
+import FormComponent from './common/FormComponent'
 import commentActions from '../actions/comment'
 import store from '../store'
 
-export default class CommentForm extends React.Component {
+export default class CommentForm extends FormComponent {
     constructor(props) {
         super(props)
-        this.state = {}
     }
 
     render() {
@@ -27,9 +27,9 @@ export default class CommentForm extends React.Component {
 
         		<p className="info">Will only be used to notify you of replies</p>
         	</div>
-        	<div className={classNames("col-xs-12 col-sm-offset-1 col-sm-9 form-group", {'has-error red': this.state.error})}>
+            <div className={classNames("col-xs-12 col-sm-offset-1 col-sm-9 form-group", {'has-error red': this.state.error.content})}>
         		<label for="content">
-                    Reply {this.state.error || ''}
+                    Reply {this.state.error.content || ''}
                     <textarea onKeyUp={this.saveState.bind(this)} className="form-control white-back min300" name="content"></textarea>
                 </label>
         	</div>
@@ -39,17 +39,6 @@ export default class CommentForm extends React.Component {
         		</button>
         	</div>
         </form>
-    }
-
-    saveState(event) {
-        let obj = {}
-        obj[event.target.name] = event.target.value
-
-        if (event.target.name === 'content' && event.target.value) {
-            this.setState({error: null})
-        }
-
-        this.setState(obj)
     }
 
     onCommentSubmit(event) {
@@ -65,13 +54,14 @@ export default class CommentForm extends React.Component {
         event.preventDefault()
 
         if (!this.state.content) {
-            this.setState({error: 'needs content'})
+            this.state.error.content = 'needs content'
+            this.setState({error: this.state.error})
             return
         }
 
-        this.setState({error: null})
+        this.setState({error: {}})
         store.dispatch(commentActions.submitComment(comment))
-            .done(() => {
+            .then(() => {
                 this.props.commentSubmitted()
             })
     }
