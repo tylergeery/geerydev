@@ -10,17 +10,17 @@ export default class NavBar extends React.Component {
     			</a>
     		</div>
 
-    		<div className={classNames("col-xs-4 col-sm-3 p-xs-none pointer ani-nav", {'gdhide': !this.props.showNav})}>
+    		<div className={classNames("p-xs-none pointer ani-nav", {'gdhide': !this.props.showNav})}>
     			<a className="full-width support-nav" href="/requests">
     				<img className="deux" src="images/03980826.blog.png" />
     			</a>
     		</div>
-    		<div className={classNames("col-xs-4 col-sm-3 p-xs-none pointer ani-nav-deux", {gdhide: !this.props.showNav})}>
+    		<div className={classNames("p-xs-none pointer ani-nav-deux", {'gdhide': !this.props.showNav})}>
     			<a className="full-width support-nav" href="/portfolio">
     				<img className="un" src="images/ef9707c1.portfolio.png" />
     			</a>
     		</div>
-    		<div className={classNames("col-xs-4 col-sm-3 p-xs-none pointer ani-nav-tre", {gdhide: !this.props.showNav})}>
+    		<div className={classNames("p-xs-none pointer ani-nav-tre", {'gdhide': !this.props.showNav})}>
     			<a className="full-width support-nav tre" href="/about">
     				<img className="tre" src="images/6526dd7f.about.png" />
     			</a>

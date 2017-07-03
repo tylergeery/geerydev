@@ -13,15 +13,15 @@ export default class Comment extends React.Component {
     }
 
     render() {
-        return <div className={classNames("single-comments col-xs-12 col-sm-offset-1 col-sm-8 double-indent overwrite",
-                {'indent': (this.props.comment.responseTo && this.props.comment.responseTo !== this.props.comment._id)})}
-                onMouseOver={this.setHeadComment.bind(this)}>
+        return <div className={classNames("single-comments col-xs-12 col-sm-offset-1 col-sm-8 overwrite",
+                {'indent': (this.props.comment.responseTo && this.props.comment.responseTo !== this.props.comment.blogId)})}>
             <div className="col-xs-2 col-lg-1">
-                    <img className="point shooter" src="images/1ca9ae8c.point.png" onClick={this.submitLike.bind(this, this.props.comment._id)} />
+                    <img className="point shooter pad-0" src="images/1ca9ae8c.point.png" onClick={this.submitLike.bind(this, this.props.comment._id)} />
                     <br />
-                    {this.props.comment.likes} Likes
+                    {this.props.comment.likes} Like{this.props.comment.likes > 1 ? 's' : ''}
             </div>
-            <p className={classNames("single-comment pl-30 col-xs-10 col-lg-11", {'highlight':  this.props.comment._id === this.props.activeComment})}>
+            <p className={classNames("single-comment pl-30 col-xs-10 col-lg-11", {'highlight':  this.props.comment._id === this.props.activeComment})}
+                onMouseOver={this.setHeadComment.bind(this)}>
                 {this.props.comment.content}
             </p>
             <div className="clear">
