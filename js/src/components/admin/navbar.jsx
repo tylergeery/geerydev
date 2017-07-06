@@ -6,6 +6,10 @@ import {
   Switch
 } from 'react-router-dom'
 
+import AdminComments from '../../containers/admin/comments'
+import AdminPosts from '../../containers/admin/AdminPosts'
+import AdminUsers from '../../containers/admin/AdminUsers'
+
 const Home = () => (
   <div>
     <h2>Home is where the heart is </h2>
@@ -47,10 +51,10 @@ const AdminRouter = () => (
 
             <section>
                 <Switch>
-                    <Route exact path="/moderate" component={Home}/>
-                    <Route exact path="/moderate/comments" component={Home}/>
-                    <Route exact path="/moderate/posts" component={About}/>
-                    <Route exact path="/moderate/users" component={About}/>
+                    <Route exact path="/moderate" component={AdminComments}/>
+                    <Route exact path="/moderate/comments" component={AdminComments}/>
+                    <Route exact path="/moderate/posts" component={AdminPosts}/>
+                    <Route exact path="/moderate/users" component={AdminUsers}/>
                     <Route exact path="/moderate/subscribers" component={About}/>
                     <Route exact path="/moderate/projects" component={Home}/>
                 </Switch>

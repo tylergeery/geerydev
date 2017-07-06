@@ -4,15 +4,19 @@ import formData from '../utils/formData'
 export default {
     getPostList(sort = '') {
         return function(dispatch) {
-            fetch('/api/blogs?sort=' + sort)
-                .then(function(response) {
-                    response.json().then(function(postList) {
-                        dispatch({
-                            type: 'FETCH_POST_LIST',
-                            posts: postList
+            return new Promise((resolve, reject) => {
+                fetch('/api/blogs?sort=' + sort)
+                    .then(function(response) {
+                        response.json().then(function(postList) {
+                            dispatch({
+                                type: 'FETCH_POST_LIST',
+                                posts: postList
+                            });
+
+                            resolve({posts: postList})
                         });
                     });
-                });
+            })
         }
     },
 
@@ -41,7 +45,8 @@ export default {
         return (dispatch) => {
             return fetch('/api/blogs', {
                 method: 'POST',
-                body: formData.getFromObject(postInfo)
+                body: formData.getFromObject(postInfo),
+                credentials: 'include'
             })
                 .then((response) => {
                     response.json().then((post) => {
@@ -60,7 +65,8 @@ export default {
         return (dispatch) => {
             return fetch('/api/blogs/' + id, {
                 method: 'PUT',
-                body: formData.getFromObject(postInfo)
+                body: formData.getFromObject(postInfo),
+                credentials: 'include'
             })
                 .then((response) => {
                     response.json().then((post) => {
@@ -75,7 +81,8 @@ export default {
 
     remove(id) {
         return (dispatch) => {
-            return fetch('/api/blogs', {
+            return fetch('/api/blogs/' + id, {
+                credentials: 'include',
                 method: 'DELETE'
             })
                 .then(() => {

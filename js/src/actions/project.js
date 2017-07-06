@@ -13,5 +13,14 @@ export default {
                     });
                 });
         }
+    },
+
+    remove(id) {
+        return function(dispatch) {
+            fetch('/api/projects/' + id + '/delete')
+                .then((response) => {
+                    this.getProjectList()
+                })
+        }
     }
 };

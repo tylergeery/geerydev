@@ -53,6 +53,7 @@ export default {
     remove(id, blogId) {
         return (dispatch) => {
             return fetch('/api/comments/' + id, {
+                credentials: 'include',
                 method: 'DELETE'
             })
                 .then((response) => {
