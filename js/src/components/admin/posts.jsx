@@ -3,6 +3,9 @@ import classNames from 'classnames'
 
 import time from '../../utils/time'
 import AdminPostForm from '../../containers/admin/AdminPostForm'
+import store from '../../store'
+import postActions from '../../actions/post'
+import commentActions from '../../actions/comment'
 
 export default class Posts extends React.Component {
 
@@ -13,6 +16,8 @@ export default class Posts extends React.Component {
             showPostForm: false,
             post: null
         }
+
+        store.dispatch(postActions.getPostList('created', '_id'))
     }
 
     render() {

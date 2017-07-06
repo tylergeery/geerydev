@@ -2,10 +2,10 @@ import 'whatwg-fetch';
 import formData from '../utils/formData'
 
 export default {
-    getPostList(sort = '') {
+    getPostList(sort = '', exists = '') {
         return function(dispatch) {
             return new Promise((resolve, reject) => {
-                fetch('/api/blogs?sort=' + sort)
+                fetch('/api/blogs?sort=' + sort + '&exists=' + exists)
                     .then(function(response) {
                         response.json().then(function(postList) {
                             dispatch({

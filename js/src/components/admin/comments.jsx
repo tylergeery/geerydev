@@ -1,12 +1,25 @@
 import React from 'react'
 
 import time from '../../utils/time'
+import store from '../../store'
+import postActions from '../../actions/post'
+import commentActions from '../../actions/comment'
 
 export default class Comments extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {}
+
+        store.dispatch(postActions.getPostList())
+            .then(function(response) {
+                if (!response.posts || !response.posts.length) {
+                    return
+                }
+
+                store.dispatch(postActions.setBlogId(response.posts[0]._id))
+                store.dispatch(commentActions.getComments(response.posts[0]._id))
+            })
     }
 
     render() {

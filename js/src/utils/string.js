@@ -6,7 +6,7 @@ export default {
      * @param {int} charCount
      * @return {string}
      */
-    truncate(str, charCount) {
+    truncate: function(str, charCount) {
         if (str.length > charCount) {
             return str.substr(0, charCount) + '...';
         }
