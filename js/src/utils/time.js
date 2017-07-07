@@ -38,7 +38,7 @@ module.exports = {
      * @return {string} day of date
      */
     iso8601ToDay: function(iso8601, fullDay) {
-        let day = (new Date(Date.parse(iso8601))).getDay();
+        let day = (new Date(Date.parse(iso8601))).getDate();
 
         return fullDay ? day + this.getDayEnding(day) : day;
     },
@@ -54,7 +54,7 @@ module.exports = {
 
         return [
             months[date.getMonth() - 1],
-            date.getDay() + ',',
+            date.getDate() + ',',
             date.getFullYear()
         ].join(' ');
     },

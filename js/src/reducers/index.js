@@ -88,6 +88,15 @@ export default function(state, action) {
             newState.comments = action.comments
 
             return newState
+
+        case 'FETCH_SUBSCRIBERS_COMPLETE':
+            newState.subscribers = action.subscribers
+
+            return newState
+        case 'FETCH_USERS_COMPLETE':
+            newState.users = action.users
+
+            return newState
     }
 
     return state;

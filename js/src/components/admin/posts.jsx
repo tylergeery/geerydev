@@ -24,15 +24,15 @@ export default class Posts extends React.Component {
         return <div className="col-xs-12">
         	<h2 className="text-muted">
         		Create a New Post
-        		<span className="pull-right point" onClick={this.toggleAddDelete.bind(this)}>Toggle</span>
+        		<span className="pull-right point" onClick={this.props.toggleAddDelete.bind(this)}>Toggle</span>
         	</h2>
-        	<p className="text-muted black-back post-pad point" onClick={this.showPostForm.bind(this)}>
+        	<p className="text-muted black-back post-pad point" onClick={this.props.showPostForm.bind(this)}>
         		Make a new post & question
         		<span className="pull-right blue-add">+</span>
         	</p>
             {this.props.posts.map(function(post) {
                 return <div key={post._id} className="text-muted">
-            		<p className={classNames("post-pad point", {'silver-back': !!post.response})} onClick={this.showPostForm.bind(this, post)}>
+            		<p className={classNames("post-pad point", {'silver-back': !!post.response})} onClick={this.props.showPostForm.bind(this, post)}>
             			{post.question} - {time.iso8601ToFullReadable(post.created)}
             			<span onClick={this.props.submitAction.bind(this, post._id)} className={classNames("pull-right",
                             {'blue-add': this.state.toggle === 'add', 'red-delete': this.state.toggle !== 'add'})}>
@@ -43,27 +43,8 @@ export default class Posts extends React.Component {
             }.bind(this))}
 
             {this.state.showPostForm
-                ? <AdminPostForm blog={this.state.post || {}} close={this.closePostForm.bind(this)} />
+                ? <AdminPostForm blog={this.state.post || {}} close={this.props.closePostForm.bind(this)} />
                 : ''}
         </div>
-    }
-
-    closePostForm() {
-        this.setState({
-            showPostForm: false
-        });
-    }
-
-    showPostForm(post) {
-        this.setState({
-            showPostForm: true,
-            post: post
-        })
-    }
-
-    toggleAddDelete() {
-        this.setState({
-            toggle: this.state.toggle === 'add' ? 'delete' : 'add'
-        })
     }
 }

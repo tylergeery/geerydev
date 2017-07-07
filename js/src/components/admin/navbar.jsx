@@ -9,18 +9,8 @@ import {
 import AdminComments from '../../containers/admin/comments'
 import AdminPosts from '../../containers/admin/AdminPosts'
 import AdminUsers from '../../containers/admin/AdminUsers'
-
-const Home = () => (
-  <div>
-    <h2>Home is where the heart is </h2>
-  </div>
-)
-
-const About = () => (
-  <div>
-    <h2>About me... No more about you</h2>
-  </div>
-)
+import AdminSubscribers from '../../containers/admin/AdminSubscribers'
+import AdminProjects from '../../containers/admin/AdminProjects'
 
 const AdminRouter = () => (
     <Router>
@@ -55,8 +45,8 @@ const AdminRouter = () => (
                     <Route exact path="/moderate/comments" component={AdminComments}/>
                     <Route exact path="/moderate/posts" component={AdminPosts}/>
                     <Route exact path="/moderate/users" component={AdminUsers}/>
-                    <Route exact path="/moderate/subscribers" component={About}/>
-                    <Route exact path="/moderate/projects" component={Home}/>
+                    <Route exact path="/moderate/subscribers" component={AdminSubscribers}/>
+                    <Route exact path="/moderate/projects" component={AdminProjects}/>
                 </Switch>
             </section>
         </div>

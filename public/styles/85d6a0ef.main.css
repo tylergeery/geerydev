@@ -235,7 +235,10 @@ ul {
     padding: 40px
 }
 .min300 {
-    min-height: 300px
+    min-height: 300px;
+}
+.min350 {
+    min-height: 350px;
 }
 .m10 {
     margin-top: 10px;
@@ -1050,4 +1053,8 @@ ul {
 }
 .pad-0 {
     padding: 0;
+}
+
+.admin-projects {
+    width: 100%;
 }

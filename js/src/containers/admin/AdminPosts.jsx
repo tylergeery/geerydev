@@ -18,6 +18,26 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
                 store.dispatch(postActions.remove(blogId))
             }
+        },
+
+        closePostForm() {
+            this.setState({
+                showPostForm: false
+            });
+        },
+
+        showPostForm(post) {
+            this.setState({
+                showPostForm: true,
+                post: post
+            })
+            window.scrollTo(0, 0)
+        },
+
+        toggleAddDelete() {
+            this.setState({
+                toggle: this.state.toggle === 'add' ? 'delete' : 'add'
+            })
         }
     }
 }

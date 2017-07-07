@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onSubmit: function(event) {
             event.preventDefault()
 
+            debugger;
             if (!this.state.question) {
                 let obj = {
                     question: 'Required'
@@ -25,18 +26,18 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             }
 
             this.setState({error: {}})
-            store.dispatch(postActions.create(this.state))
-                .then(() => {
-                    this.setState({success: true})
 
-                    setTimeout(() => {
-                        this.setState({success: false})
-                    }, 4000)
-                })
-        },
-
-        close: function() {
-            this.setState({blogId: null})
+            if (this.state._id) {
+                store.dispatch(postActions.update(this.state._id, this.state))
+                    .then(() => {
+                        this.props.close()
+                    })
+            } else {
+                store.dispatch(postActions.create(this.state))
+                    .then(() => {
+                        this.props.close()
+                    })
+            }
         }
     }
 }
