@@ -85,13 +85,15 @@ export default {
                 credentials: 'include',
                 method: 'DELETE'
             })
-                .then(() => {
-                    dispatch({
-                        type: 'POST_DELETED',
-                        post: post
-                    })
+                .then((response) => {
+                    response.json().then((post) => {
+                        dispatch({
+                            type: 'POST_DELETED',
+                            post: post
+                        })
 
-                    dispatch(this.getPostList())
+                        dispatch(this.getPostList())
+                    })
                 })
         }
     }
