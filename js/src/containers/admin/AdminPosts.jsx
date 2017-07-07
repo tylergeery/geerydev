@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 event.stopPropagation()
 
                 store.dispatch(postActions.remove(blogId))
+                    .then(() => {
+                        store.dispatch(postActions.getPostList('created', '_id'))
+                    })
             }
         },
 

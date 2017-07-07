@@ -91,8 +91,6 @@ export default {
                             type: 'POST_DELETED',
                             post: post
                         })
-
-                        dispatch(this.getPostList())
                     })
                 })
         }

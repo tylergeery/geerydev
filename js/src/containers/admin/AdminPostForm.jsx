@@ -31,11 +31,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 store.dispatch(postActions.update(this.state._id, this.state))
                     .then(() => {
                         this.props.close()
+                        store.dispatch(postActions.getPostList('created', '_id'))
                     })
             } else {
                 store.dispatch(postActions.create(this.state))
                     .then(() => {
                         this.props.close()
+                        store.dispatch(postActions.getPostList('created', '_id'))
                     })
             }
         }
