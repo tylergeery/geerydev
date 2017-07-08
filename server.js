@@ -1,5 +1,4 @@
 'use strict';
-require('newrelic');
 
 var express = require('express'),
     path = require('path'),
@@ -27,7 +26,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 
 // Populate empty DB with sample data
 // require('./lib/config/dummydata');
-  
+
 // Passport Configuration
 require('./lib/config/passport')();
 
