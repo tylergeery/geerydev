@@ -15,7 +15,7 @@ module.exports = {
         loaders: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'react-hot!babel' // Include the react-hot loader
+            loader: 'babel-loader'
         }]
     },
     resolve: {
@@ -25,8 +25,5 @@ module.exports = {
         path: path.resolve(__dirname, 'js/dist'),
         publicPath: '/',
         filename: '[name].js'
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin() // Wire in the hot loading plugin
-    ]
+    }
 };
