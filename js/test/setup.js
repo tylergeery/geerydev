@@ -7,8 +7,11 @@ const win = doc.defaultView;
 global.document = doc;
 global.window = win;
 
+// fix for FormData
+global.FormData = window.FormData;
+
 Object.keys(window).forEach((key) => {
-  if (!(key in global)) {
-    global[key] = window[key];
-  }
+    if (!(key in global)) {
+        global[key] = window[key];
+    }
 });

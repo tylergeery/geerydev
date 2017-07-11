@@ -9,16 +9,16 @@ export default {
             };
         }
 
-        return function(dispatch) {
-            fetch('/api/blogs/search/' + encodeURIComponent(search))
-                .then(function(response) {
-                    response.json().then(function(searchResults) {
+        return function (dispatch) {
+            return window.fetch('/api/blogs/search/' + encodeURIComponent(search))
+                .then((response) => {
+                    response.json().then((searchResults) => {
                         dispatch({
                             type: 'FETCH_POSTS',
                             searchResults: searchResults
                         });
                     });
                 });
-        }
+        };
     }
 };
