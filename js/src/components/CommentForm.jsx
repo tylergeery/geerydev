@@ -28,10 +28,10 @@ export default class CommentForm extends FormComponent {
         		<p className="info">Will only be used to notify you of replies</p>
         	</div>
             <div className={classNames("col-xs-12 col-sm-offset-1 col-sm-9 form-group", {'has-error red': this.state.error.content})}>
-        		<label for="content">
-                    Reply {this.state.error.content || ''}
-                    <textarea onKeyUp={this.saveState.bind(this)} className="form-control white-back min300" name="content"></textarea>
-                </label>
+        		<label>
+                Reply {this.state.error.content || ''}
+                <textarea onKeyUp={this.saveState.bind(this)} className="form-control white-back min300" name="content"></textarea>
+            </label>
         	</div>
         	<div className="col-xs-12 form-group mt-20">
         		<button type="submit" className="form-control white-back">

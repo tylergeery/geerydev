@@ -19,8 +19,10 @@ export default class PostForm extends FormComponent {
             	</span>
             	<h2 className="text-muted center">Post Controller</h2>
             	<div className="form-group pad-box">
-            		<label for="question">Post Title:</label>
-            		<input onKeyUp={this.saveState.bind(this)} type="text" className="form-control" name="question" defaultValue={this.props.blog.question} />
+            		<label>
+                    Post Title:
+                    <input onKeyUp={this.saveState.bind(this)} type="text" className="form-control" name="question" defaultValue={this.props.blog.question} />
+                </label>
             	</div>
             	<div className="form-group pad-box">
             		<label>
