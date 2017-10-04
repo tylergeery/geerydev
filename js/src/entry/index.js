@@ -7,6 +7,7 @@ import store from '../store';
 import postActions from '../actions/post';
 import GeeryDevHomePanel from '../containers/GeeryDevHomePanel';
 import GeeryDevPostList from '../containers/GeeryDevPostList';
+import url from '../utils/url';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -22,4 +23,9 @@ ReactDOM.render(
   document.getElementById('geerydev-posts')
 );
 
-store.dispatch(postActions.getPostList())
+
+
+const params = url.getParams();
+const per_page = +params.per_page || 10;
+const page = +params.page || 1;
+store.dispatch(postActions.getPostList('', '', page, per_page));
