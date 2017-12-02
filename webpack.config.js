@@ -6,6 +6,7 @@ module.exports = {
         index: './js/src/entry/index',
         portfolio: './js/src/entry/portfolio',
         about: './js/src/entry/about',
+        sudoku: './js/src/entry/sudoku',
         single: './js/src/entry/single', // catch-all
         common: './js/src/entry/common', // catch-all
 
