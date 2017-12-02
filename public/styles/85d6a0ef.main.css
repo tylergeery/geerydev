@@ -1058,3 +1058,13 @@ ul {
 .admin-projects {
     width: 100%;
 }
+
+.gd-pagination a {
+    padding: 10px;
+    margin: 10px;
+    float: right;
+    color: #333333;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    text-decoration: none;
+}

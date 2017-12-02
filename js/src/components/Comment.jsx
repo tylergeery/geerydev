@@ -31,7 +31,7 @@ export default class Comment extends React.Component {
                     </div>
                     <div className={classNames("col-xs-12 col-sm-11 col-sm-offset-1 gd-fade-down-in silver-back clear", {'gd-hidden': !this.state.commenting})}>
                         <CommentForm commentSubmitted={this.closeCommenting.bind(this)}
-                                blogId={this.props.blogId} responseTo={this.props.comment._id} responseHead={this.props.comment.responseHead} />
+                                blogId={this.props.comment.blogId} responseTo={this.props.comment._id} responseHead={this.props.comment.responseHead} />
                     </div>
                 </div>
             </div>
