@@ -1,15 +1,15 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import ProjectList from '../components/ProjectList'
+import ProjectList from '../components/ProjectList';
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    projects: state.projects
-  }
-}
+const mapStateToProps = (state, ownProps) => (
+    {
+        projects: state.projects
+    }
+);
 
 const GeeryDevProjectList = connect(
   mapStateToProps
-)(ProjectList)
+)(ProjectList);
 
-export default GeeryDevProjectList
+export default GeeryDevProjectList;

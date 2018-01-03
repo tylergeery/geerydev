@@ -9,9 +9,9 @@ export default class SidePanel extends React.Component {
                 <h3 className="strategic black-back white pad-box small-radius">
                     Popular Posts
                 </h3>
-                {this.props.sidePanelPosts.map(function (post) {
-                    return <SidePanelPost key={post._id} post={post} />
-                })}
+                {this.props.sidePanelPosts.map(post => (
+                    <SidePanelPost key={post._id} post={post} />
+                ))}
             </div>
         );
     }

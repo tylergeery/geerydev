@@ -1,15 +1,15 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import SidePanel from '../components/SidePanel'
+import SidePanel from '../components/SidePanel';
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-      sidePanelPosts: state.sidePanelPosts
-  }
-}
+const mapStateToProps = (state, ownProps) => (
+    {
+        sidePanelPosts: state.sidePanelPosts
+    }
+);
 
 const GeeryDevSidePanel = connect(
   mapStateToProps
-)(SidePanel)
+)(SidePanel);
 
-export default GeeryDevSidePanel
+export default GeeryDevSidePanel;

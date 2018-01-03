@@ -15,8 +15,11 @@ export default class CommentList extends React.Component {
         return (
             <div onMouseLeave={this.setActiveComment.bind(this, null)}>
                 {this.props.comments.map(function (comment) {
-                    return <Comment key={comment._id} comment={comment}
-                        activeComment={this.state.activeComment} onCommentHover={this.setActiveComment.bind(this)} />
+                    return (
+                        <Comment key={comment._id} comment={comment}
+                            activeComment={this.state.activeComment}
+                            onCommentHover={this.setActiveComment.bind(this)} />
+                    );
                 }.bind(this))}
             </div>
         );

@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import Cloud from '../components/Cloud';
 import cloudActions from '../actions/cloud';
 
-const mapStateToProps = (state, ownProps) => {
-    return {
+const mapStateToProps = (state, ownProps) => (
+    {
         searchResults: state.searchResults
-    };
-};
+    }
+);
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
+const mapDispatchToProps = (dispatch, ownProps) => (
+    {
         followPost(request) {
             window.location.href = '/requests/' + request._id;
         },
@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         search(event) {
             dispatch(cloudActions.queryPosts(event.target.value));
         }
-    };
-};
+    }
+);
 
 const GeeryDevCloud = connect(
   mapStateToProps,
