@@ -13,7 +13,7 @@ class Sudoku extends React.Component {
     render() {
         return (
             <div>
-                <h4>{this.props.headline}</h4>
+                <h4>{this.props.action.toUpperCase()}</h4>
                 {this.props.action === 'edit'
                     ? <InputBoard board={this.props.board} />
                     : <DisplayBoard board={this.props.board} />}

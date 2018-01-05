@@ -47,7 +47,11 @@ let initialState = {
     projects: [],
     sidePanelPosts: [],
     blogId: null,
-    comments: []
+    comments: [],
+    sudoku: {
+        action: 'Start',
+        board: Array.from(Array(9), () => Array.from(Array(9), () => null))
+    }
 };
 
 export default function(state, action) {
