@@ -17,7 +17,7 @@ export default class RequestForm extends FormComponent {
                     placeholder={!this.state.error.question ? 'Ask me a question...' : 'Required'}></textarea>
                 <input className={classNames("form-control m10", {hide: this.state.success})} onKeyUp={this.saveState.bind(this)} type="text" name="askedBy" placeholder="Anonymous" />
                 <input className={classNames("form-control m10", {hide: this.state.success})} onKeyUp={this.saveState.bind(this)} type="text" name="email" placeholder="Email (Optional)" />
-                <button type="submit" className={classNames({hide: this.state.success})}>Provoke</button>
+                <button type="submit" className={classNames({ hide: this.state.success })}>Provoke</button>
             </form>
         );
     }

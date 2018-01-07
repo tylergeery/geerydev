@@ -1,3 +1,6 @@
+import actions from '../actions/constants';
+import sudokuSeedData from '../data/sudoku/seed';
+
 let initialState = {
     quotes: [
         {
@@ -105,6 +108,21 @@ export default function(state, action) {
             return newState;
         case 'FETCH_USERS_COMPLETE':
             newState.users = action.users;
+
+            return newState;
+        case actions.sudokuSetRandomBoard:
+            var currentBoard = this.state.sudoku.board.reduce((row, acc) => c + acc, ''),
+                rand = Math.floor(Math.rand() * sudokuSeedData.length);
+
+            while (sudokuSeedData[rand] === currentBoard) {
+                rand = Math.floor(Math.rand() * sudokuSeedData.length);
+            }
+
+            newState.sudoku.board = sudokuSeedData[rand].split();
+
+            return newState;
+        case actions.sudokuSetBoard:
+            newState.sudoku.board = action.board;
 
             return newState;
     }

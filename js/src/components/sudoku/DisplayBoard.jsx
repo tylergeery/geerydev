@@ -9,13 +9,15 @@ class DisplayBoard extends React.Component {
     render() {
         return (
             <table className={classNames(this.props.action, 'gd-sudoku-table')}>
-                {this.props.board.map((row, idx) => (
-                    <tr key={idx}>
-                        {row.map((col, colIdx) => (
-                            <td key={colIdx}>{col}</td>
-                        ))}
-                    </tr>
-                ))}
+                <tbody>
+                    {this.props.board.map((row, idx) => (
+                        <tr key={idx}>
+                            {row.map((col, colIdx) => (
+                                <td key={colIdx}>{col}</td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
             </table>
         );
     }
