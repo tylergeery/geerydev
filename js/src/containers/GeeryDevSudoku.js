@@ -17,8 +17,8 @@ class Sudoku extends React.Component {
                 <div className="col-sm-6">
                     <h3>{this.props.action.toUpperCase()}</h3>
                     {this.props.action === 'edit'
-                        ? <InputBoard board={this.props.board} />
-                        : <DisplayBoard board={this.props.board} />}
+                        ? <InputBoard {...this.props} />
+                        : <DisplayBoard {...this.props} />}
                 </div>
                 <div className="col-sm-6">
                     <ActionPanel action={this.props.action} />
@@ -37,8 +37,17 @@ const mapStateToProps = (state, ownProps) => (
 
 const mapDispatchToProps = (dispatch, ownProps) => (
     {
-        // TODO
-        temp: () => {}
+        setBoard: () => {
+            dispatch(sudokuActions.setBoard());
+        },
+
+        setRandomBoard: () => {
+            dispatch(sudokuActions.setRandomBoard());
+        },
+
+        setSquare: () => {
+            dispatch(sudokuActions.setSquare());
+        }
     }
 );
 
