@@ -10,7 +10,7 @@ class ActionPanel extends React.Component {
         return (
             <div>
                 <div>
-                    <button classNames="btn btn-primary">Random Board</button>
+                    <button classNames="btn btn-primary" onClick={this.props.setRandomBoard}>Random Board</button>
                     <button classNames="btn btn-secondary">Input New Board</button>
                 </div>
                 <form>

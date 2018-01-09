@@ -21,7 +21,7 @@ class Sudoku extends React.Component {
                         : <DisplayBoard {...this.props} />}
                 </div>
                 <div className="col-sm-6">
-                    <ActionPanel action={this.props.action} />
+                    <ActionPanel {...this.props} />
                 </div>
             </div>
         );
@@ -37,16 +37,20 @@ const mapStateToProps = (state, ownProps) => (
 
 const mapDispatchToProps = (dispatch, ownProps) => (
     {
-        setBoard: () => {
-            dispatch(sudokuActions.setBoard());
+        setAction: (action) => {
+            dispatch(sudokuActions.setAction(action));
+        },
+
+        setBoard: (board) => {
+            dispatch(sudokuActions.setBoard(board));
         },
 
         setRandomBoard: () => {
             dispatch(sudokuActions.setRandomBoard());
         },
 
-        setSquare: () => {
-            dispatch(sudokuActions.setSquare());
+        setSquare: (square, value) => {
+            dispatch(sudokuActions.setSquare(square, value));
         }
     }
 );
