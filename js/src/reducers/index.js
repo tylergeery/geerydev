@@ -111,14 +111,24 @@ export default function(state, action) {
 
             return newState;
         case actions.sudokuSetRandomBoard:
-            var currentBoard = this.state.sudoku.board.reduce((row, acc) => c + acc, ''),
-                rand = Math.floor(Math.rand() * sudokuSeedData.length);
+            var currentBoard = state.sudoku.board.reduce((row, acc) => row + acc, ''),
+                rand = Math.floor(Math.random() * sudokuSeedData.length);
 
             while (sudokuSeedData[rand] === currentBoard) {
-                rand = Math.floor(Math.rand() * sudokuSeedData.length);
+                rand = Math.floor(Math.random() * sudokuSeedData.length);
             }
 
-            newState.sudoku.board = sudokuSeedData[rand].split();
+            newState.sudoku.board = [
+                sudokuSeedData[rand].substr(0, 9).split(''),
+                sudokuSeedData[rand].substr(9, 9).split(''),
+                sudokuSeedData[rand].substr(18, 9).split(''),
+                sudokuSeedData[rand].substr(27, 9).split(''),
+                sudokuSeedData[rand].substr(36, 9).split(''),
+                sudokuSeedData[rand].substr(45, 9).split(''),
+                sudokuSeedData[rand].substr(54, 9).split(''),
+                sudokuSeedData[rand].substr(63, 9).split(''),
+                sudokuSeedData[rand].substr(72, 9).split('')
+            ];
 
             return newState;
         case actions.sudokuSetBoard:

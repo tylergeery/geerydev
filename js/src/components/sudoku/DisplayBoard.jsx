@@ -13,7 +13,7 @@ class DisplayBoard extends React.Component {
                     {this.props.board.map((row, idx) => (
                         <tr key={idx}>
                             {row.map((col, colIdx) => (
-                                <td key={colIdx}>{col}</td>
+                                <td key={colIdx}>{+col ? col : ''}</td>
                             ))}
                         </tr>
                     ))}
