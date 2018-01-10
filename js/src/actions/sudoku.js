@@ -2,6 +2,17 @@ import actions from './constants';
 
 export default {
     /**
+     * @param {string} action
+     * @return {Object}
+     */
+    setAction(action) {
+        return {
+            type: actions.sudokuSetAction,
+            action
+        };
+    },
+
+    /**
      * @param {int} square
      * @param {int} value
      * @return {Object}
@@ -36,9 +47,9 @@ export default {
     /**
      * @return {Object}
      */
-    setRandomBoard() {
+    solveRandomBoard() {
         return {
-            type: actions.sudokuSetRandomBoard
+            type: actions.sudokuSolveRandomBoard
         };
     }
 };

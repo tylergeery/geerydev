@@ -14,13 +14,13 @@ class Sudoku extends React.Component {
     render() {
         return (
             <div>
-                <div className="col-sm-6">
+                <div className="col-sm-12">
                     <h3>{this.props.action.toUpperCase()}</h3>
                     {this.props.action === 'edit'
                         ? <InputBoard {...this.props} />
                         : <DisplayBoard {...this.props} />}
                 </div>
-                <div className="col-sm-6">
+                <div className="col-sm-12 center">
                     <ActionPanel {...this.props} />
                 </div>
             </div>
@@ -45,8 +45,8 @@ const mapDispatchToProps = (dispatch, ownProps) => (
             dispatch(sudokuActions.setBoard(board));
         },
 
-        setRandomBoard: () => {
-            dispatch(sudokuActions.setRandomBoard());
+        solveRandomBoard: () => {
+            dispatch(sudokuActions.solveRandomBoard());
         },
 
         setSquare: (square, value) => {

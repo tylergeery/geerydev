@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 
 import store from '../store';
 import GeeryDevHeadBar from '../containers/GeeryDevHeadBar';
@@ -21,6 +21,16 @@ ReactDOM.render(
   document.getElementById('geerydev-navbar')
 );
 
-setInterval(function() {
-    store.dispatch(headbarActions.incrementQuote());
-}, 5000);
+let ts = window.performance.now();
+let step = function (current) {
+        if ((current - ts) > 5000) {
+            ts = current;
+            store.dispatch(headbarActions.incrementQuote());
+        }
+
+        window.requestAnimationFrame(step);
+    };
+
+if (!/\?debug/.test(window.location.search)) {
+    window.requestAnimationFrame(step);
+}

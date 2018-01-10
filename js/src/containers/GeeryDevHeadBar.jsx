@@ -1,22 +1,18 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import HeadBar from '../components/HeadBar'
+import HeadBar from '../components/HeadBar';
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    results: state.results
-  }
-}
+const mapStateToProps = (state, ownProps) => (
+    {
+        results: state.results
+    }
+);
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-
-  }
-}
+const mapDispatchToProps = (dispatch, ownProps) => ({});
 
 const GeeryDevHeadBar = connect(
   mapStateToProps,
   mapDispatchToProps
-)(HeadBar)
+)(HeadBar);
 
-export default GeeryDevHeadBar
+export default GeeryDevHeadBar;

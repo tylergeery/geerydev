@@ -10,17 +10,46 @@ class ActionPanel extends React.Component {
         return (
             <div>
                 <div>
-                    <button classNames="btn btn-primary" onClick={this.props.setRandomBoard}>Random Board</button>
-                    <button classNames="btn btn-secondary">Input New Board</button>
+                    <div className="pad-box">
+                        {this.props.action === 'edit'
+                            ? (
+                                <button className="btn btn-primary" onClick={this.props.setAction.bind(null, 'solve')}>
+                                    Solve
+                                </button>
+                            ) : (
+                                <button className="btn btn-primary" onClick={this.props.solveRandomBoard}>
+                                    Solve Random
+                                </button>
+                            )
+                        }
+                    </div>
+                    <div className="pad-box">
+                        {this.props.action === 'edit'
+                            ? '' : (
+                                <button className="btn btn-secondary" onClick={this.props.setAction.bind(null, 'edit')}>
+                                    Input New Board
+                                </button>
+                            )
+                        }
+                    </div>
                 </div>
-                <form>
-                    <label>
-                        Temp
-                        <input name="temp" type="slider" />
-                    </label>
-                </form>
+                {/solve/g.test(this.props.action)
+                    ? (
+                        <form>
+                            <label>
+                                Depth
+                                <input name="depth" type="slider" />
+                            </label>
+                            <label>
+                                Speed
+                                <input name="speed" type="slider" />
+                            </label>
+                        </form>
+                    ) : ''
+                }
             </div>
         );
     }
 }
+
 export default ActionPanel;

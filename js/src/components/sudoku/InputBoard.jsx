@@ -14,7 +14,7 @@ class InputBoard extends React.Component {
                         <tr key={idx}>
                             {row.map((col, colIdx) => (
                                 <td key={colIdx}>
-                                    <input type="number" step="1" max="9" min="1" />
+                                    <input type="text" name="row-{idx}-col-{colIdx}"/>
                                 </td>
                             ))}
                         </tr>

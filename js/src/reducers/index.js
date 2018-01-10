@@ -1,5 +1,5 @@
 import actions from '../actions/constants';
-import sudokuSeedData from '../data/sudoku/seed';
+import sudokuSeedData from '../logic/sudoku/seed';
 
 let initialState = {
     quotes: [
@@ -53,7 +53,12 @@ let initialState = {
     comments: [],
     sudoku: {
         action: 'Start',
-        board: Array.from(Array(9), () => Array.from(Array(9), () => null))
+        board: Array.from(Array(9), () => Array.from(Array(9), () => null)),
+        current: {
+            temporary: null, //TODO
+            searching: null,
+            active: null
+        }
     }
 };
 
@@ -110,7 +115,7 @@ export default function(state, action) {
             newState.users = action.users;
 
             return newState;
-        case actions.sudokuSetRandomBoard:
+        case actions.sudokuSolveRandomBoard:
             var currentBoard = state.sudoku.board.reduce((row, acc) => row + acc, ''),
                 rand = Math.floor(Math.random() * sudokuSeedData.length);
 
@@ -118,6 +123,7 @@ export default function(state, action) {
                 rand = Math.floor(Math.random() * sudokuSeedData.length);
             }
 
+            newState.sudoku.action = 'solve-random';
             newState.sudoku.board = [
                 sudokuSeedData[rand].substr(0, 9).split(''),
                 sudokuSeedData[rand].substr(9, 9).split(''),
@@ -133,6 +139,10 @@ export default function(state, action) {
             return newState;
         case actions.sudokuSetBoard:
             newState.sudoku.board = action.board;
+
+            return newState;
+        case actions.sudokuSetAction:
+            newState.sudoku.action = action.action;
 
             return newState;
     }
