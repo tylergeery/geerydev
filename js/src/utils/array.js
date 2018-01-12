@@ -5,7 +5,7 @@ module.exports = {
      * @param {array} arr
      * @return {array} randomly shuffled
      */
-    shuffleRandom: function (array) {
+    shuffleRandom: function (arr) {
         var currentIndex = arr.length, temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
@@ -20,7 +20,7 @@ module.exports = {
             arr[randomIndex] = temporaryValue;
         }
 
-        return array;
+        return arr;
     },
 
     /**
