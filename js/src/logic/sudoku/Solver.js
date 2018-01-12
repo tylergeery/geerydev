@@ -11,12 +11,12 @@ export default class Solver {
     }
 
     setAllowedDepth(allowedDepth) {
-        this.depth = depth;
+        this.allowedDepth = allowedDepth;
     }
 
     solve(board, depth) {
-        if (this.board.solved()) {
-            return this.board;
+        if (board.solved()) {
+            return board;
         }
 
         let domain = new Domain(board);
@@ -26,19 +26,20 @@ export default class Solver {
             board.setValue(unassigned, value);
             domain.updateNeighbors(unassigned);
 
-            if depth < this.depth:
-                copy = this.solve(board.copy(), depth + 1)
+            if depth < this.allowedDepth {
+                copy = this.solve(board.copy(), depth + 1);
 
                 if (copy.solved()) {
                     return copy;
                 }
 
-                if (copy.getHeuristic() > this.best.getHeuristic()) {
+                if (copy.getHeuristicValue() > this.best.getHeuristicValue()) {
                     this.best = copy;
                 }
+            }
 
-            board.setValue(unassigned, 0)
-            domain.updateNeighbors(unassigned)
+            board.setValue(unassigned, 0);
+            domain.updateNeighbors(unassigned);
         });
 
         return this.best;
