@@ -4,7 +4,7 @@ export default class Domain {
         this.board = board;
 
         for (let i = 0; i < 81; i++) {
-            this.domains.append([]);
+            this.domains.push([]);
             this.updateDomainValues(i);
         }
     }
@@ -22,9 +22,13 @@ export default class Domain {
     }
 
     getOpenPos() {
-        for (let i = 0; i < 10; i++) {
-            for (let j = 0; i < 81; j++) {
-                if (this.domains[j].length === i && this.board.getValue(j) == 0) {
+        for (let i = 1; i < 10; i++) {
+            for (let j = 0; j < 81; j++) {
+                if (this.board.getValue(j) !== 0) {
+                    continue;
+                }
+
+                if (this.domains[j].length === i) {
                     return j;
                 }
             }

@@ -41,9 +41,9 @@ export default class Board {
     }
 
     getColumn(pos) {
-        colStart = this.getColumnStart(pos);
+        let colStart = this.getColumnStart(pos);
 
-        return [0, 9, 18, 27, 36, 45, 54, 63, 72].map((x) => (this.board[x + colStart]));
+        return [0, 9, 18, 27, 36, 45, 54, 63, 72].map((x) => (+this.board[x + colStart]));
     }
 
     getRowStart(pos) {
@@ -51,26 +51,26 @@ export default class Board {
     }
 
     getRow(pos) {
-        rowStart = this.getRowStart(pos);
+        let rowStart = this.getRowStart(pos);
 
-        return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => (this.board[x + rowStart]));
+        return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => (+this.board[x + rowStart]));
     }
 
     getSquareStart(pos) {
-        row = Math.floor(pos / 9);
-        col = pos % 9;
+        let row = Math.floor(pos / 9);
+        let col = pos % 9;
 
         return 9 * (row - (row % 3)) + (col - (col % 3));
     }
 
     getSquare(pos) {
-        squareStart = this.getSquareStart(pos);
+        let squareStart = this.getSquareStart(pos);
 
-        return [0, 1, 2, 9, 10, 11, 18, 19, 20].map((x) => (this.board[x + squareStart]));
+        return [0, 1, 2, 9, 10, 11, 18, 19, 20].map((x) => (+this.board[x + squareStart]));
     }
 
     getValue(pos) {
-        return this.board[pos];
+        return +this.board[pos];
     }
 
     setValue(pos, value) {

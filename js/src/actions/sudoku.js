@@ -45,6 +45,27 @@ export default {
     },
 
     /**
+     * Set the current board for viewing algorithm state
+     *
+     * @param {Object} currentBoard
+     * @return {Object}
+     */
+    setCurrentBoard(currentBoard) {
+        // TODO validate board
+        if (false) {
+            return {
+                type: actions.sudokuSetCurrentBoardError,
+                error: ' Invalid sudoku board. Needs correcting.'
+            };
+        }
+
+        return {
+            type: actions.sudokuSetCurrentBoard,
+            currentBoard
+        };
+    },
+
+    /**
      * @return {Object}
      */
     solveRandomBoard() {

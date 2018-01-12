@@ -3,7 +3,7 @@ import formData from '../utils/formData'
 
 export default {
     getPostList(sort = '', exists = '', page = 1, per_page = 10) {
-        return function(dispatch) {
+        return function (dispatch) {
             return new Promise((resolve, reject) => {
                 fetch('/api/blogs?sort=' + sort + '&exists=' + exists + '&page=' + page + '&per_page=' + per_page)
                     .then(function(response) {
@@ -31,19 +31,19 @@ export default {
                         });
                     });
                 });
-        }
+        };
     },
 
     setBlogId(blogId) {
         return {
             type: 'SET_BLOG_ID',
             blogId: blogId
-        }
+        };
     },
 
     create(postInfo) {
-        return (dispatch) => {
-            return fetch('/api/blogs', {
+        return (dispatch) => (
+            fetch('/api/blogs', {
                 method: 'POST',
                 body: formData.getFromObject(postInfo),
                 credentials: 'include'
@@ -53,12 +53,12 @@ export default {
                         dispatch({
                             type: 'POST_CREATED',
                             post: post
-                        })
+                        });
 
-                        dispatch(this.getPostList())
-                    })
-                })
-        }
+                        dispatch(this.getPostList());
+                    });
+                });
+        )
     },
 
     update(id, postInfo) {

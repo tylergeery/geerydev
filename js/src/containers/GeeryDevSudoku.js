@@ -30,7 +30,7 @@ class Sudoku extends React.Component {
 
 const mapStateToProps = (state, ownProps) => (
     {
-        board: state.sudoku.board,
+        board: /solve/g.test(state.sudoku.action) ? state.sudoku.currentBoard : state.sudoku.board,
         action: state.sudoku.action
     }
 );

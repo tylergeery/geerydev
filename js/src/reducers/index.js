@@ -1,5 +1,8 @@
 import actions from '../actions/constants';
 import sudokuSeedData from '../logic/sudoku/seed';
+import arrayUtils from '../utils/array';
+import Solver from '../logic/sudoku/Solver';
+import Board from '../logic/sudoku/Board';
 
 let initialState = {
     quotes: [
@@ -54,11 +57,8 @@ let initialState = {
     sudoku: {
         action: 'Start',
         board: Array.from(Array(9), () => Array.from(Array(9), () => null)),
-        current: {
-            temporary: null, //TODO
-            searching: null,
-            active: null
-        }
+        currentBoard: Array.from(Array(9), () => Array.from(Array(9), () => null)),
+        solver: null
     }
 };
 
@@ -123,26 +123,26 @@ export default function(state, action) {
                 rand = Math.floor(Math.random() * sudokuSeedData.length);
             }
 
+            newState.sudoku.solver && newState.sudoku.solver.clear();
             newState.sudoku.action = 'solve-random';
-            newState.sudoku.board = [
-                sudokuSeedData[rand].substr(0, 9).split(''),
-                sudokuSeedData[rand].substr(9, 9).split(''),
-                sudokuSeedData[rand].substr(18, 9).split(''),
-                sudokuSeedData[rand].substr(27, 9).split(''),
-                sudokuSeedData[rand].substr(36, 9).split(''),
-                sudokuSeedData[rand].substr(45, 9).split(''),
-                sudokuSeedData[rand].substr(54, 9).split(''),
-                sudokuSeedData[rand].substr(63, 9).split(''),
-                sudokuSeedData[rand].substr(72, 9).split('')
-            ];
+            newState.sudoku.board = arrayUtils.to2DArrayFromString(sudokuSeedData[rand], 9);
+            newState.sudoku.solver = new Solver(new Board(sudokuSeedData[rand].split('')));
+            newState.sudoku.solver.solve();
 
             return newState;
         case actions.sudokuSetBoard:
-            newState.sudoku.board = action.board;
+            newState.sudoku.board = arrayUtils.to2DArrayFromString(action.board);
+            newState.sudoku.solver && newState.sudoku.solver.clear();
+            newState.sudoku.solver = new Solver(new Board(action.board.split('')));
+            newState.sudoku.solver.solve();
 
             return newState;
         case actions.sudokuSetAction:
             newState.sudoku.action = action.action;
+
+            return newState;
+        case actions.sudokuSetCurrentBoard:
+            newState.sudoku.currentBoard = arrayUtils.to2DArrayFromString(action.currentBoard, 9);
 
             return newState;
     }

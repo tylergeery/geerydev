@@ -21,11 +21,11 @@ module.exports = {
      * @param {boolean} fullYear
      * @return {string} date in pretty format
      */
-    iso8601ToPretty: function(iso8601, fullYear) {
+    iso8601ToPretty: function (iso8601, fullYear) {
         let date = new Date(Date.parse(iso8601));
 
         return [
-            months[date.getMonth() - 1].substring(0, 3),
+            months[date.getMonth()].substring(0, 3),
             fullYear ? date.getFullYear() : date.getFullYear().toString().substr(-2)
         ].join(' ');
     },
@@ -37,7 +37,7 @@ module.exports = {
      * @param {boolean} fullDay
      * @return {string} day of date
      */
-    iso8601ToDay: function(iso8601, fullDay) {
+    iso8601ToDay: function (iso8601, fullDay) {
         let day = (new Date(Date.parse(iso8601))).getDate();
 
         return fullDay ? day + this.getDayEnding(day) : day;
@@ -49,17 +49,17 @@ module.exports = {
      * @param {string} iso8601
      * @return {string} day of date
      */
-    iso8601ToFullReadable: function(iso8601) {
+    iso8601ToFullReadable: function (iso8601) {
         let date = new Date(Date.parse(iso8601));
 
         return [
-            months[date.getMonth() - 1],
+            months[date.getMonth()],
             date.getDate() + ',',
             date.getFullYear()
         ].join(' ');
     },
 
-    getDayEnding: function(day) {
+    getDayEnding: function (day) {
         let ending = '';
 
         if (day > 0 && day <= 31)  {
@@ -84,4 +84,4 @@ module.exports = {
 
         return ending;
     }
-}
+};
