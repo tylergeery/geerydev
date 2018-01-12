@@ -101,4 +101,21 @@ export default class Board {
 
         return true;
     }
+
+    /**
+     * Simply counts amount of non-empty spaces
+     *
+     * @return {int}
+     */
+    getHeuristicValue() {
+        let value = this.board.length;
+
+        for (let i = 0; i < this.board.length; i++) {
+            if (+this.board[i] === 0) {
+                value--;
+            }
+        }
+
+        return value;
+    }
 }
