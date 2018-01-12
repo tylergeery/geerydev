@@ -1,23 +1,23 @@
 import 'whatwg-fetch';
-import formData from '../utils/formData'
+import formData from '../utils/formData';
 
 export default {
-    getPostList(sort = '', exists = '', page = 1, per_page = 10) {
-        return function (dispatch) {
-            return new Promise((resolve, reject) => {
-                fetch('/api/blogs?sort=' + sort + '&exists=' + exists + '&page=' + page + '&per_page=' + per_page)
-                    .then(function(response) {
-                        response.json().then(function(postList) {
+    getPostList(sort = '', exists = '', page = 1, perPage = 10) {
+        return (dispatch) => (
+            new Promise((resolve, reject) => {
+                fetch('/api/blogs?sort=' + sort + '&exists=' + exists + '&page=' + page + '&per_page=' + perPage)
+                    .then(response => {
+                        response.json().then((postList) => {
                             dispatch({
                                 type: 'FETCH_POST_LIST',
                                 posts: postList
                             });
 
-                            resolve({posts: postList})
+                            resolve({ posts: postList });
                         });
                     });
             })
-        }
+        );
     },
 
     getSideBarPosts() {
@@ -57,13 +57,13 @@ export default {
 
                         dispatch(this.getPostList());
                     });
-                });
-        )
+                })
+        );
     },
 
     update(id, postInfo) {
-        return (dispatch) => {
-            return fetch('/api/blogs/' + id, {
+        return (dispatch) => (
+            fetch('/api/blogs/' + id, {
                 method: 'PUT',
                 body: formData.getFromObject(postInfo),
                 credentials: 'include'
@@ -73,15 +73,15 @@ export default {
                         dispatch({
                             type: 'POST_UPDATED',
                             post: post
-                        })
-                    })
+                        });
+                    });
                 })
-        }
+        );
     },
 
     remove(id) {
-        return (dispatch) => {
-            return fetch('/api/blogs/' + id, {
+        return (dispatch) => (
+            fetch('/api/blogs/' + id, {
                 credentials: 'include',
                 method: 'DELETE'
             })
@@ -90,10 +90,10 @@ export default {
                         dispatch({
                             type: 'POST_DELETED',
                             post: post
-                        })
-                    })
+                        });
+                    });
                 })
-        }
+        );
     }
 
 };
