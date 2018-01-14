@@ -80,7 +80,7 @@
     "validateQuoteMarks": { "mark": "'", "escape": true, "ignoreJSX": true },
     "validateIndentation": 4,
     "maximumLineLength": {
-        "value": 120,
+        "value": 250,
         "allExcept": ["urlComments"]
     }
 }
