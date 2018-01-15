@@ -1,10 +1,20 @@
+class BoardError {
+    constructor(message) {
+        this.message = message;
+    }
+
+    getMessage() {
+        return this.message || '';
+    }
+};
+
 export default class Board {
     constructor(board) {
         this.board = board;
     }
 
     copy() {
-        return new Board(this.board);
+        return new Board(this.board.slice());
     }
 
     getAsString() {
@@ -19,6 +29,35 @@ export default class Board {
         }
 
         return true;
+    }
+
+    validateVector(vec) {
+        for (let i = 0; i < 9; i++) {
+            if (vec[i] && vec.indexOf(vec[i]) !== i) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    validate() {
+        for (let i = 0; i < 9; i++) {
+            // go through horizontals
+            if (!this.validateVector(this.getRow(i * 9))) {
+                throw new BoardError('Board contains invalid row ' + (i + 1));
+            }
+
+            // go through verticals
+            if (!this.validateVector(this.getColumn(i))) {
+                throw new BoardError('Board contains invalid column ' + (i + 1));
+            }
+
+            // go through each square
+            if (!this.validateVector(this.getSquare(i * 9 + ((i % 3) * 3)))) {
+                throw new BoardError('Board contains invalid square ' + (i + 1));
+            }
+        }
     }
 
     getAvailableValues(pos) {
@@ -43,7 +82,7 @@ export default class Board {
     getColumn(pos) {
         let colStart = this.getColumnStart(pos);
 
-        return [0, 9, 18, 27, 36, 45, 54, 63, 72].map((x) => (+this.board[x + colStart]));
+        return [0, 9, 18, 27, 36, 45, 54, 63, 72].map((x) => (this.getValue(x + colStart)));
     }
 
     getRowStart(pos) {
@@ -53,7 +92,7 @@ export default class Board {
     getRow(pos) {
         let rowStart = this.getRowStart(pos);
 
-        return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => (+this.board[x + rowStart]));
+        return [0, 1, 2, 3, 4, 5, 6, 7, 8].map((x) => (this.getValue(x + rowStart)));
     }
 
     getSquareStart(pos) {
@@ -66,7 +105,7 @@ export default class Board {
     getSquare(pos) {
         let squareStart = this.getSquareStart(pos);
 
-        return [0, 1, 2, 9, 10, 11, 18, 19, 20].map((x) => (+this.board[x + squareStart]));
+        return [0, 1, 2, 9, 10, 11, 18, 19, 20].map((x) => (this.getValue(x + squareStart)));
     }
 
     getValue(pos) {
@@ -78,7 +117,18 @@ export default class Board {
     }
 
     pretty() {
-        console.log(this.board);
+        let output = '\n';
+        let board = this.board.join('');
+
+        for (let i = 0; i < 9; i++) {
+            output += board.substr(i * 9, 9).split('').join('|') + '\n';
+
+            if (i < 8 && i % 3 === 2) {
+                output += '_________\n';
+            }
+        }
+
+        return output;
     }
 
     solved() {
@@ -94,28 +144,11 @@ export default class Board {
             }
 
             // go through each square
-            if (!this.valid(this.getSquare(i * 9 + (i % 3) * 3))) {
+            if (!this.valid(this.getSquare(i * 9 + ((i % 3) * 3)))) {
                 return false;
             }
         }
 
         return true;
-    }
-
-    /**
-     * Simply counts amount of non-empty spaces
-     *
-     * @return {int}
-     */
-    getHeuristicValue() {
-        let value = this.board.length;
-
-        for (let i = 0; i < this.board.length; i++) {
-            if (+this.board[i] === 0) {
-                value--;
-            }
-        }
-
-        return value;
     }
 }

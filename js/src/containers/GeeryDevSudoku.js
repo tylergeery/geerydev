@@ -30,19 +30,30 @@ class Sudoku extends React.Component {
 
 const mapStateToProps = (state, ownProps) => (
     {
-        board: /solve/g.test(state.sudoku.action) ? state.sudoku.currentBoard : state.sudoku.board,
-        action: state.sudoku.action
+        action: state.sudoku.action,
+        currentBoard: state.sudoku.currentBoard,
+        previousBoard: state.sudoku.previousBoard,
+        originalBoard: state.sudoku.originalBoard,
+        stepsRemaining: state.sudoku.stepsRemaining
     }
 );
 
 const mapDispatchToProps = (dispatch, ownProps) => (
     {
+        clearInput: () => {
+            dispatch(sudokuActions.clearInput());
+        },
+
         setAction: (action) => {
             dispatch(sudokuActions.setAction(action));
         },
 
-        setBoard: (board) => {
-            dispatch(sudokuActions.setBoard(board));
+        setSpeed: (speed) => {
+            dispatch(sudokuActions.setSpeed(speed));
+        },
+
+        solveInput: () => {
+            dispatch(sudokuActions.setBoard());
         },
 
         solveRandomBoard: () => {
@@ -51,6 +62,10 @@ const mapDispatchToProps = (dispatch, ownProps) => (
 
         setSquare: (square, value) => {
             dispatch(sudokuActions.setSquare(square, value));
+        },
+
+        validateInput: (board) => {
+            dispatch(sudokuActions.validateInput(board));
         }
     }
 );

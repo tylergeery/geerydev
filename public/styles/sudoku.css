@@ -41,6 +41,7 @@ h3 {
 }
 
 .gd-sudoku-table td {
+    color: #46B29D;
     font-size: 1.5em;
     text-align: center;
 }
@@ -48,4 +49,16 @@ h3 {
 .gd-sudoku-table td input {
     width: 100%;
     height: 100%;
+}
+
+.gd-sudoku-table td.og {
+    color: black;
+}
+
+.gd-sudoku-table td.removed {
+    background-color: #F53855;
+}
+
+.gd-sudoku-table td.added {
+    background-color: #88F9D4;
 }
