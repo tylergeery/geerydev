@@ -2,39 +2,36 @@ import React from 'react';
 import classNames from 'classnames';
 
 class InputBoard extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            inputs: Array.from(Array(81), () => null)
-        };
-    }
-
     render() {
         return (
-            <table className={classNames(this.props.action, 'gd-sudoku-table')}>
-                <tbody>
-                    {this.props.currentBoard.map((row, idx) => (
-                        <tr key={idx}>
-                            {row.map((col, colIdx) => (
-                                <td key={colIdx}>
-                                    <input type="text" name="row-{idx}-col-{colIdx}" onChange={this.inputEdit.bind(this, idx * 9 + colIdx)}/>
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <div>
+                {this.props.boardError ?
+                    (<div className ="alert alert-danger">
+                        <strong>Error!</strong> {this.props.boardError}.
+                    </div>) : ''
+                }
+                <table className={classNames(this.props.action, 'gd-sudoku-table')}>
+                    <tbody>
+                        {this.props.currentBoard.map((row, idx) => (
+                            <tr key={idx}>
+                                {row.map((col, colIdx) => (
+                                    <td key={colIdx}>
+                                        <input type="text" name="row-{idx}-col-{colIdx}"
+                                            onChange={this.inputEdit.bind(this, idx * 9 + colIdx)}
+                                            defaultValue={this.props.input[idx * 9 + colIdx] || ''}/>
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 
     inputEdit(idx, event) {
-        let state = { inputs: this.state.inputs };
-        state.inputs[idx] = event.target.value;
-
-        this.setState({ inputs });
-
-        this.props.validateInput(inputs.join(''));
+        this.props.input[idx] = +event.target.value;
+        this.props.validateInput(this.props.input);
     }
 }
 export default InputBoard;

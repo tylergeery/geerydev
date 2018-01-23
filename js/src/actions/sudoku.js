@@ -1,4 +1,5 @@
 import actions from './constants';
+import arrayUtils from '../utils/array';
 import Board from '../logic/sudoku/Board';
 import store from '../store';
 
@@ -18,6 +19,13 @@ export default {
         return {
             type: actions.sudokuSetAction,
             action
+        };
+    },
+
+    setAllowedDepth(depth) {
+        return {
+            type: actions.sudokuSetAllowedDepth,
+            depth
         };
     },
 
@@ -57,6 +65,12 @@ export default {
         };
     },
 
+    solveInput() {
+        return {
+            type: actions.sudokuSolveInput
+        };
+    },
+
     /**
      * @return {Object}
      */
@@ -68,7 +82,7 @@ export default {
 
     validateInput(input) {
         try {
-            let board = new Board(arrayUtils.to2DArrayFromString(input));
+            let board = new Board(input);
             board.validate();
 
             return {

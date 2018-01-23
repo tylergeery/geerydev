@@ -62,3 +62,7 @@ h3 {
 .gd-sudoku-table td.added {
     background-color: #88F9D4;
 }
+
+#geerydev-sudoku-solver .sudoku-action-panel label {
+    margin: 1em;
+}

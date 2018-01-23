@@ -58,10 +58,12 @@ let initialState = {
         action: 'Start',
         boardError: null,
         currentBoard: Array.from(Array(9), () => Array.from(Array(9), () => null)),
-        input: '',
+        depth: 75,
+        input: Array.from(Array(81), () => 0),
         originalBoard: Array.from(Array(9), () => Array.from(Array(9), () => null)),
         previousBoard: Array.from(Array(9), () => Array.from(Array(9), () => null)),
-        solver: null
+        solver: null,
+        speed: 275
     }
 };
 
@@ -133,7 +135,11 @@ export default function(state, action) {
             newState.sudoku.currentBoard = board;
             newState.sudoku.previousBoard = board;
             newState.sudoku.originalBoard = board;
-            newState.sudoku.solver = new Solver(new Board(sudokuSeedData[rand].split('')));
+            newState.sudoku.solver = new Solver(
+                new Board(sudokuSeedData[rand].split('')),
+                state.sudoku.depth,
+                state.sudoku.speed
+            );
             newState.sudoku.solver.iterateAndSolve();
 
             return newState;
@@ -147,12 +153,34 @@ export default function(state, action) {
             newState.sudoku.currentBoard = currBoard;
             newState.sudoku.originalBoard = currBoard;
             newState.sudoku.solver && newState.sudoku.solver.clear();
-            newState.sudoku.solver = new Solver(new Board(action.board.split('')));
+            newState.sudoku.solver = new Solver(
+                new Board(action.board.split('')),
+                state.sudoku.depth,
+                state.sudoku.speed
+            );
             newState.sudoku.solver.iterateAndSolve();
 
             return newState;
         case actions.sudokuSetAction:
             newState.sudoku.action = action.action;
+
+            return newState;
+        case actions.sudokuSetAllowedDepth:
+            let newBoard = state.sudoku.originalBoard;
+
+            newState.sudoku.depth = action.depth;
+            newState.sudoku.solver && newState.sudoku.solver.clear();
+            newState.sudoku.currentBoard = newBoard;
+            newState.sudoku.previousBoard = newBoard;
+            newState.sudoku.solver = new Solver(
+                new Board(newBoard[0].concat(
+                    newBoard[1], newBoard[2], newBoard[3], newBoard[4],
+                    newBoard[5], newBoard[6], newBoard[7], newBoard[8]
+                )),
+                action.depth,
+                state.sudoku.speed
+            );
+            newState.sudoku.solver.iterateAndSolve();
 
             return newState;
         case actions.sudokuSetCurrentBoard:
@@ -166,7 +194,23 @@ export default function(state, action) {
 
             return newState;
         case actions.sudokuSetSpeed:
+            newState.sudoku.speed = action.speed;
             newState.sudoku.solver.setSpeed(action.speed);
+
+            return newState;
+        case actions.sudokuSolveInput:
+            let curr = arrayUtils.to2DArrayFromString(state.sudoku.input.join(''), 9);
+
+            newState.sudoku.action = 'solve';
+            newState.sudoku.currentBoard = curr;
+            newState.sudoku.originalBoard = curr;
+            newState.sudoku.solver && newState.sudoku.solver.clear();
+            newState.sudoku.solver = new Solver(
+                new Board(state.sudoku.input),
+                state.sudoku.depth,
+                state.sudoku.speed
+            );
+            newState.sudoku.solver.iterateAndSolve();
 
             return newState;
     }
