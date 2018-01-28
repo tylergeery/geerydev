@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => (
 
 const mapDispatchToProps = (dispatch, ownProps) => (
     {
-        onSubmit: (event) => {
+        onSubmit: function (event) {
             event.preventDefault();
 
             if (!this.state.question) {
