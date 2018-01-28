@@ -44,7 +44,7 @@ class ActionPanel extends React.Component {
                 {/solve/g.test(this.props.action)
                     ? (
                         <form>
-                            <div className="col-xs-6">
+                            <div className="col-xs-12 col-md-6">
                                 <label>
                                     Depth
                                     <br/>
@@ -53,7 +53,7 @@ class ActionPanel extends React.Component {
                                     {this.props.depth > 150 ? 10 : this.props.depth / 15}
                                 </label>
                             </div>
-                            <div className="col-xs-6">
+                            <div className="col-xs-12 col-md-6">
                                 <label>
                                     Speed
                                     <br/>
