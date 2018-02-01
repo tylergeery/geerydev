@@ -13,6 +13,7 @@ export default {
     postUpdated: 'POST_UPDATED',
     postsFetch: 'POST_FETCH',
     postsFetchSearchResults: 'POST_FETCH_SEARCH_RESULTS',
+    postsFetchSidePanel: 'POST_FETCH_SIDE_PANEL',
 
     projectFetch: 'PROJECT_FETCH',
 

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import comments from './commments';
+import comments from './comments';
 import nav from './nav';
 import panels from './panels';
-import post from './posts';
+import posts from './posts';
 import projects from './projects';
 import subscribers from './subscribers';
 import sudoku from './sudoku';
@@ -13,7 +13,7 @@ module.exports = combineReducers({
     comments,
     nav,
     panels,
-    post,
+    posts,
     projects,
     subscribers,
     sudoku,

@@ -22,6 +22,12 @@ let initialState = {
 };
 
 export default function panels(state, action) {
+    if (!state) {
+        state = initialState;
+    }
+
+    let newState = Object.assign({}, state);
+
     switch (action.type) {
         case actions.panelSetActive:
             newState.activePanel = action.panel;

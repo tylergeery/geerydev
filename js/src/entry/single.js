@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 
 import '../common/navComponents';
 import '../common/panelSpy';
@@ -23,15 +23,15 @@ ReactDOM.render(
         <GeeryDevCommentSection />
     </Provider>,
     document.getElementById('geerydev-comments')
-)
+);
 
 ReactDOM.render(
     <Provider store={store}>
         <GeeryDevCommentList />
     </Provider>,
     document.getElementById('geerydev-comment-list')
-)
+);
 
-store.dispatch(postActions.getSideBarPosts())
-store.dispatch(postActions.setBlogId(window.GeeryDev.blogId))
-store.dispatch(commentActions.getComments(window.GeeryDev.blogId))
+store.dispatch(postActions.getSideBarPosts());
+store.dispatch(commentActions.setPostId(window.GeeryDev.blogId));
+store.dispatch(commentActions.getComments(window.GeeryDev.blogId));

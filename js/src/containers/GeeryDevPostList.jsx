@@ -4,7 +4,7 @@ import PostList from '../components/PostList';
 import url from '../utils/url';
 
 const mapStateToProps = (state, ownProps) => {
-    const posts = state.posts || [];
+    const posts = state.posts.list || [];
     const params = url.getParams();
     const perPage = +params.per_page || 10;
     const page = +params.page || 1;

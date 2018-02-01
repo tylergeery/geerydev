@@ -46,7 +46,7 @@ describe('reducers/index', () => {
                 posts: posts
             });
 
-            expect(state.posts).to.equal(posts);
+            expect(state.posts.list).to.equal(posts);
         });
     });
 
