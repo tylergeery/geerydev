@@ -1,10 +1,12 @@
 import 'whatwg-fetch';
 
+import actions from './constants';
+
 export default {
     queryPosts(search) {
         if (!search) {
             return {
-                type: 'FETCH_POSTS',
+                type: actions.postsFetchSearchResults,
                 searchResults: []
             };
         }
@@ -14,8 +16,8 @@ export default {
                 .then((response) => {
                     response.json().then((searchResults) => {
                         dispatch({
-                            type: 'FETCH_POSTS',
-                            searchResults: searchResults
+                            type: actions.postsFetchSearchResults,
+                            searchResults
                         });
                     });
                 });

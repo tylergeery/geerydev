@@ -1,7 +1,9 @@
+import actions from './constants';
+
 export default {
     incrementQuote() {
         return {
-            type: 'INCREMENT_QUOTE'
+            type: actions.navIncrementQuote
         };
     }
 };

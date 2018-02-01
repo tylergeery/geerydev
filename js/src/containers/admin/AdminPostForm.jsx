@@ -6,8 +6,8 @@ import postActions from '../../actions/post';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        blogs: state.posts || [],
-        comments: state.comments || []
+        blogs: state.posts.lists || [],
+        comments: state.comments.list || []
     }
 );
 

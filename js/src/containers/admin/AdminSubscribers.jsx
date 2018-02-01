@@ -1,24 +1,20 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import store from '../../store'
-import Subscribers from '../../components/admin/subscribers'
-import adminActions from '../../actions/admin'
+import store from '../../store';
+import Subscribers from '../../components/admin/subscribers';
+import adminActions from '../../actions/admin';
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        subscribers: state.subscribers || []
+const mapStateToProps = (state, ownProps) => (
+    {
+        subscribers: state.subscribers.list || []
     }
-}
+);
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-
-    }
-}
+const mapDispatchToProps = (dispatch, ownProps) => ({});
 
 const AdminSubscribers = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Subscribers)
+)(Subscribers);
 
-export default AdminSubscribers
+export default AdminSubscribers;

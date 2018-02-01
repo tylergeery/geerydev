@@ -2,15 +2,15 @@ import { connect } from 'react-redux';
 
 import CommentList from '../components/CommentList';
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        blogId: state.blogId,
-        comments: state.comments
+const mapStateToProps = (state, ownProps) => (
+    {
+        blogId: state.comments.postId,
+        comments: state.comments.list
     }
-}
+);
 
 const GeeryDevCommentList = connect(
     mapStateToProps
-)(CommentList)
+)(CommentList);
 
-export default GeeryDevCommentList
+export default GeeryDevCommentList;

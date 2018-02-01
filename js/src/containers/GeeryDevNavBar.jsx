@@ -4,8 +4,8 @@ import generalActions from '../actions/general';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        quote: state.quotes[state.activeQuote] || '',
-        showNav: state.showNav
+        quote: state.nav.quotes[state.nav.activeQuote] || '',
+        showNav: state.nav.showNav
     }
 );
 

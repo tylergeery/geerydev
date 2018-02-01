@@ -4,7 +4,7 @@ export default {
 
         return {
             type: 'SET_ACTIVE_PANEL',
-            panel: (state.activePanel === panel ? '' : panel)
+            panel: (state.panels.activePanel === panel ? '' : panel)
         };
     }
-}
+};

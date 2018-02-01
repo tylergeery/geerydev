@@ -1,4 +1,6 @@
 import 'whatwg-fetch';
+
+import actions from './constants';
 import formData from '../utils/formData';
 
 export default {
@@ -9,7 +11,7 @@ export default {
                     .then(response => {
                         response.json().then((postList) => {
                             dispatch({
-                                type: 'FETCH_POST_LIST',
+                                type: actions.postsFetch,
                                 posts: postList
                             });
 
@@ -26,18 +28,11 @@ export default {
                 .then((response) => {
                     response.json().then((postList) => {
                         dispatch({
-                            type: 'FETCH_SIDE_PANEL_POSTS',
+                            type: actions.postsFetchSidePanel,
                             posts: postList
                         });
                     });
                 });
-        };
-    },
-
-    setBlogId(blogId) {
-        return {
-            type: 'SET_BLOG_ID',
-            blogId: blogId
         };
     },
 
@@ -51,7 +46,7 @@ export default {
                 .then((response) => {
                     response.json().then((post) => {
                         dispatch({
-                            type: 'POST_CREATED',
+                            type: actions.postCreated,
                             post: post
                         });
 
@@ -71,7 +66,7 @@ export default {
                 .then((response) => {
                     response.json().then((post) => {
                         dispatch({
-                            type: 'POST_UPDATED',
+                            type: actions.postUpdated,
                             post: post
                         });
                     });
@@ -88,7 +83,7 @@ export default {
                 .then((response) => {
                     response.json().then((post) => {
                         dispatch({
-                            type: 'POST_DELETED',
+                            type: actions.postDeleted,
                             post: post
                         });
                     });

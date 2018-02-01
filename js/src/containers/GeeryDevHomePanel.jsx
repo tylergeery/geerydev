@@ -6,8 +6,8 @@ import postActions from '../actions/post';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        activePanel: state.activePanel,
-        panelFilters: state.panelFilters,
+        activePanel: state.panels.activePanel,
+        panelFilters: state.panels.panelFilters,
         subscribeSuccess: state.subscribeSuccess
     }
 );

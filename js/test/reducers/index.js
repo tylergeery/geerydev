@@ -1,46 +1,48 @@
 import { expect, assert } from 'chai';
+
+import actions from '../../src/actions/constants';
 import reducer from '../../src/reducers';
 
 describe('reducers/index', () => {
     it('has expected initial state', () => {
         let initialState = reducer(null, {});
 
-        assert(initialState.quotes.length === 5);
-        assert(initialState.activeQuote === 0);
-        assert(initialState.showNav === false);
-        assert(initialState.panelFilters.length === 3);
+        assert(initialState.nav.quotes.length === 5);
+        assert(initialState.nav.activeQuote === 0);
+        assert(initialState.nav.showNav === false);
+        assert(initialState.panels.panelFilters.length === 3);
     });
 
     describe('it handles expected action types', () => {
         let initialState = reducer(null, {});
 
-        it('SET_SHOW_NAV', () => {
+        it(actions.setShowNav, () => {
             let state = reducer(initialState, {
-                type: 'SET_SHOW_NAV'
+                type: actions.navSetShowNav
             });
-            assert(state.showNav !== initialState.showNav);
+            assert(state.nav.showNav !== initialState.nav.showNav);
             state = reducer(state, {
-                type: 'SET_SHOW_NAV'
+                type: actions.navSetShowNav
             });
-            assert(state.showNav === initialState.showNav);
+            assert(state.nav.showNav === initialState.nav.showNav);
         });
 
-        it('INCREMENT_QUOTE', () => {
+        it(actions.navIncrementQuote, () => {
             let state = reducer(initialState, {
-                type: 'INCREMENT_QUOTE'
+                type: actions.navIncrementQuote
             });
-            expect(state.activeQuote).to.equal(initialState.activeQuote + 1);
+            expect(state.nav.activeQuote).to.equal(initialState.nav.activeQuote + 1);
 
-            state.activeQuote = state.quotes.length - 1;
-            state = reducer(state, { type: 'INCREMENT_QUOTE' });
+            state.nav.activeQuote = state.quotes.length - 1;
+            state = reducer(state, { type: actions.navIncrementQuote });
 
             expect(state.activeQuote).to.equal(0);
         });
 
-        it('FETCH_POST_LIST', () => {
+        it(actions.postsFetch, () => {
             let posts = [{ content: 'what?' }, { vary: 'mas' }];
             let state = reducer(initialState, {
-                type: 'FETCH_POST_LIST',
+                type: actions.postsFetch,
                 posts: posts
             });
 
