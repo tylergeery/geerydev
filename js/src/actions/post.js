@@ -27,7 +27,6 @@ export default {
             fetch('/api/blogs?sort=mystery&limit=5')
                 .then((response) => {
                     response.json().then((postList) => {
-                        debugger;
                         dispatch({
                             type: actions.postsFetchSidePanel,
                             posts: postList
