@@ -30,6 +30,7 @@
     "mongoose-unique-validator": "~0.3.0",
     "newrelic": "*",
     "nodemailer": "*",
+    "object.values": "^1.0.4",
     "passport": "latest",
     "passport-local": "latest",
     "react": "^0.14.7",
