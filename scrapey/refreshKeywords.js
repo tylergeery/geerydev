@@ -8,10 +8,9 @@ var config = require('../lib/config/config'),
     tibwCount = 0, tibwDone = false;
 
 Blog.find({})
-    .limit(100)
+    .batchSize(100)
     .exec(function (err, blogs) {
         blogs.forEach(function (blog) {
-            blog.keywords = middleware.extractKeywords(blog.question + ' ' + blog.response);
             blog.save();
             blogsCount++;
 
@@ -22,10 +21,9 @@ Blog.find({})
     });
 
 TIBW.find({})
-    .limit(100)
+    .batchSize(100)
     .exec(function (err, tibws) {
         tibws.forEach(function (tibw) {
-            tibw.keywords = middleware.extractKeywords(tibw.title + ' ' + tibw.content);
             tibw.save();
             tibwCount++;
 
