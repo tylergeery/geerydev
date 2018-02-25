@@ -1,10 +1,7 @@
-let lastActivate = Date.now();
-let queue = null;
-
 function activation() {
     var el = document.querySelector('#geerydev-side-panel');
 
-    if (window.pageYOffset > 250) {
+    if (window && window.pageYOffset > 250) {
         if (el.className.indexOf('fixed top0') !== -1) {
             return;
         }
@@ -19,9 +16,6 @@ function activation() {
     }
 }
 
-function queue() {
-    clearTimeout(queue);
-
-    queue = setTimeout(activation, 200);
+if (window) {
+    window.addEventListener('scroll', activation);
 }
-window.addEventListener('scroll', activation);

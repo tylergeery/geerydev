@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-
 import actions from './constants';
 import formData from '../utils/formData';
 
@@ -10,16 +8,23 @@ export default {
                 fetch('/api/blogs?sort=' + sort + '&exists=' + exists + '&page=' + page + '&per_page=' + perPage)
                     .then(response => {
                         response.json().then((postList) => {
-                            dispatch({
-                                type: actions.postsFetch,
-                                posts: postList
-                            });
-
-                            resolve({ posts: postList });
+                            resolve(dispatch(this.setPostList(postList)));
                         });
                     });
             })
         );
+    },
+
+    /**
+     * Set postLists
+     *
+     * @param {Object} posts
+     */
+    setPostList(posts) {
+        return {
+            type: actions.postsFetch,
+            posts
+        };
     },
 
     getSideBarPosts() {

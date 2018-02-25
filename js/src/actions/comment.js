@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-
 import actions from './constants';
 import storage from '../utils/storage';
 import formData from '../utils/formData';

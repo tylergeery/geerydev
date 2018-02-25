@@ -1,6 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import store from '../store';
+import headbarActions from '../actions/headbar';
+
 export default class NavBar extends React.Component {
     render() {
         return (
@@ -34,5 +37,21 @@ export default class NavBar extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    componentDidMount() {
+        let ts = window.performance.now();
+        let step = function (current) {
+                if ((current - ts) > 5000) {
+                    ts = current;
+                    store.dispatch(headbarActions.incrementQuote());
+                }
+
+                window.requestAnimationFrame(step);
+            };
+
+        if (!/\?debug/.test(window.location.search)) {
+            window.requestAnimationFrame(step);
+        }
     }
 };

@@ -1,8 +1,13 @@
 export default {
-    getKey: function(keyName) {
+    /**
+     * Get local storage key value
+     *
+     * @param {string} keyName
+     */
+    getKey: function (keyName) {
         try {
-            if (window.localStorage) {
-                return window.localStorage.getItem(keyName)
+            if (window && window.localStorage) {
+                return window.localStorage.getItem(keyName);
             }
         } catch (e) {
             // Do nothing, private browsing
@@ -11,13 +16,19 @@ export default {
         return null;
     },
 
-    setKey: function(keyName, value) {
+    /**
+     * Set local storage key with value
+     *
+     * @pram {string} keyName
+     * @param {string} value
+     */
+    setKey: function (keyName, value) {
         try {
-            if (window.localStorage) {
-                window.localStorage.setItem(keyName, value)
+            if (window && window.localStorage) {
+                window.localStorage.setItem(keyName, value);
             }
         } catch (e) {
             // Do nothing, private browsing
         }
     },
-}
+};

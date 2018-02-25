@@ -33,6 +33,10 @@
 
     <%= include ../partials/footer %>
 
+    <script>
+        window.GeeryDev = window.GeeryDev || {};
+        window.GeeryDev.state = <%- JSON.stringify(state) %>;
+    </script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

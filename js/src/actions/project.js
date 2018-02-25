@@ -1,20 +1,22 @@
-import 'whatwg-fetch';
-
 import actions from './constants';
 import formData from '../utils/formData';
 
 export default {
     getProjectList(sort = '') {
-        return function (dispatch) {
-            return fetch('/api/projects')
+        return (dispatch) => (
+            fetch('/api/projects')
                 .then((response) => {
                     response.json().then(function (projectList) {
-                        dispatch({
-                            type: actions.projectFetch,
-                            projects: projectList
-                        });
+                        dispatch(this.setProjectList(projectList));
                     });
-                });
+                })
+        );
+    },
+
+    setProjectList(projects) {
+        return {
+            type: actions.projectFetch,
+            projects
         };
     },
 
