@@ -6,7 +6,7 @@ export default {
         return (dispatch) => (
             fetch('/api/projects')
                 .then((response) => {
-                    response.json().then(function (projectList) {
+                    response.json().then((projectList) => {
                         dispatch(this.setProjectList(projectList));
                     });
                 })
