@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux/src';
+import { Provider } from 'react-redux';
 
 import '../common/navComponents';
 import store from '../store';
