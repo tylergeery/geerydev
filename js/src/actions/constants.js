@@ -1,4 +1,7 @@
 export default {
+    classifierFetchComplete: 'CLASSIFIER_FETCH_COMPLETE',
+    classifierFetchError: 'CLASSIFIER_FETCH_ERROR',
+
     commentsFetchComplete: 'COMMENT_FETCH_COMPLETE',
     commentsLikeComplete: 'COMMENT_LIKE_COMPLETE',
     commentsSetPostId: 'COMMENT_SET_POST_ID',
