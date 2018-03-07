@@ -7,9 +7,9 @@ import '../common/navComponents';
 import store from '../store';
 import GeeryDevClassifier from '../containers/GeeryDevClassifier';
 
-ReactDOM.render(
+ReactDOM.hydrate(
     <Provider store={store}>
         <GeeryDevClassifier />
     </Provider>,
-  document.getElementById('geerydev-classifier')
+    document.getElementById('geerydev-classifier')
 );

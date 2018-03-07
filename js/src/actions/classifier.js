@@ -1,4 +1,5 @@
 import actions from './constants';
+import quip from '../logic/classifier/quips';
 
 export default {
     classify(query) {
@@ -10,13 +11,20 @@ export default {
         }
 
         return function (dispatch) {
-            return fetch('/api/geerdev-tibw-classifier' + encodeURIComponent(search))
+            return fetch('/api/geerdev-tibw-classifier?query=' + encodeURIComponent(query))
                 .then((response) => {
-                    response.json().then((searchResults) => {
+                    response.json().then(({ pred, conf }) => {
                         dispatch({
-                            type: actions.postsFetchSearchResults,
-                            searchResults
+                            type: actions.classifierFetchComplete,
+                            pred,
+                            conf,
+                            quip: quip(pred, conf)
                         });
+                    });
+                }, (err) => {
+                    dispatch({
+                        type: actions.classifierFetchError,
+                        error: 'Something went wrong. Please try again'
                     });
                 });
         };

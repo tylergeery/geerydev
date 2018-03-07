@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import classifier from './classifier';
 import comments from './comments';
 import nav from './nav';
 import panels from './panels';
@@ -10,6 +11,7 @@ import sudoku from './sudoku';
 import users from './users';
 
 module.exports = combineReducers({
+    classifier,
     comments,
     nav,
     panels,

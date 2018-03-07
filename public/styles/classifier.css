@@ -1,0 +1,25 @@
+#geerydev-classifier {
+    font-size: 1.5em;
+}
+
+#geerydev-classifier .pad-box {
+    padding: 20px 10px;
+}
+
+#geerydev-classifier input[type="text"] {
+    font-size: 1.2em;
+    height: 2em;
+}
+
+.gd-classifier-explanation {
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s
+}
+
+.gd-classifier-explanation.hidden {
+    opacity: 0;
+    max-height: 0;
+}
