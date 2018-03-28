@@ -4,7 +4,9 @@ let initialState = {
     error: null,
     explain: true,
     query: '',
-    quip: null
+    results: [],
+    searching: false,
+    resultsActive: false
 };
 
 export default function classifier(state, action) {
@@ -15,15 +17,26 @@ export default function classifier(state, action) {
     let newState = Object.assign({}, state);
 
     switch (action.type) {
+        case actions.classifierFetchActive:
+            newState.searching = true;
+
+            return newState;
         case actions.classifierFetchComplete:
             newState.explain = false;
-            newState.quip = action.quip;
+            newState.results.unshift(action.result);
+            newState.results = newState.results.slice(0, 50);
+            newState.resultsActive = false;
 
             return newState;
         case actions.classifierFetchError:
             newState.error = action.error;
             newState.explain = true;
-            newState.quip = initialState.quip;
+            newState.searching = false;
+
+            return newState;
+        case actions.classifierResultsActive:
+            newState.resultsActive = true;
+            newState.searching = false;
 
             return newState;
     }

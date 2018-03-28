@@ -11,6 +11,10 @@ export default {
         }
 
         return function (dispatch) {
+            dispatch({
+                type: actions.classifierFetchActive
+            });
+
             return fetch('/api/geerdev-tibw-classifier?query=' + encodeURIComponent(query))
                 .then((response) => {
                     response.json().then(({ pred, conf }) => {
@@ -18,8 +22,17 @@ export default {
                             type: actions.classifierFetchComplete,
                             pred,
                             conf,
-                            quip: quip(pred, conf)
+                            result: {
+                                query,
+                                quip: quip(pred, conf)
+                            }
                         });
+
+                        setTimeout(() => {
+                            dispatch({
+                                type: actions.classifierResultsActive
+                            });
+                        }, 800);
                     });
                 }, (err) => {
                     dispatch({

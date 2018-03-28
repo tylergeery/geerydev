@@ -1,6 +1,8 @@
 export default {
+    classifierFetchActive: 'CLASSIFIER_FETCH_ACTIVE',
     classifierFetchComplete: 'CLASSIFIER_FETCH_COMPLETE',
     classifierFetchError: 'CLASSIFIER_FETCH_ERROR',
+    classifierResultsActive: 'CLASSIFIER_RESULTS_ACTIVE',
 
     commentsFetchComplete: 'COMMENT_FETCH_COMPLETE',
     commentsLikeComplete: 'COMMENT_LIKE_COMPLETE',
