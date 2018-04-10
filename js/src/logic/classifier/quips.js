@@ -1,19 +1,23 @@
 const quips = {
     low: [
         'If I had to guess. I would say ${subject}',
-        'This isn\t a lot to go on. How about ${subject}',
+        'This isn\'t a lot to go on. How about ${subject}?',
         'Seems to me maybe ${subject}',
-        '${subject} if I had to choose'
+        '${subject} if I had to choose',
+        'Ok. I don\'t know. Maybe ${subject}'
     ],
     med: [
         'I\'m saying it\'s ${subject}',
-        'That\s got to be from ${subject}',
+        'That\'s got to be from ${subject}',
         'Easy Peasy. ${subject}',
-        'Made me think a bit. But it\'s from ${subject}'
+        'Made me think a bit. But it\'s from ${subject}',
+        'Let\'s bet on it. It\'s ${subject}'
     ],
     high: [
         'That\'s from ${subject}. I\'ll Geerantee it',
-        '${subject} I\'ve never been more certain'
+        '${subject} I\'ve never been more certain',
+        'Try something more difficult. It\'s from ${subject}',
+        'No doubt in my mind. ${subject}'
     ]
 };
 
