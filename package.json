@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
     "build": "webpack",
-=======
     "start": "NODE_ENV=production babel-node server.js",
     "start:dev": "NODE_ENV=dev nodemon server.js --exec babel-node --ext js,ejs,jsx",
->>>>>>> 8e96a23e276cb0c1b4e8807fcd83519a9d3af5df
     "heroku-postbuild": "NODE_ENV=production webpack",
     "test": "mocha --compilers js:babel-core/register --require ./js/test/setup.js 'js/test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch --watch-extensions jsx"
