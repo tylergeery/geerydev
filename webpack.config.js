@@ -14,14 +14,21 @@ module.exports = {
         admin: './js/src/entry/admin'
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel-loader'
+            use: {
+                loader: 'babel-loader',
+                options: {
+                  babelrc: true,
+                  extends: path.join(__dirname + '/.babelrc'),
+                  cacheDirectory: true
+                }
+            }
         }]
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
     output: {
         path: path.resolve(__dirname, 'js/dist'),
