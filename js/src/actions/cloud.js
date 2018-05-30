@@ -1,21 +1,21 @@
-import 'whatwg-fetch';
+import actions from './constants';
 
 export default {
     queryPosts(search) {
         if (!search) {
             return {
-                type: 'FETCH_POSTS',
+                type: actions.postsFetchSearchResults,
                 searchResults: []
             };
         }
 
         return function (dispatch) {
-            return window.fetch('/api/blogs/search/' + encodeURIComponent(search))
+            return fetch('/api/blogs/search/' + encodeURIComponent(search))
                 .then((response) => {
                     response.json().then((searchResults) => {
                         dispatch({
-                            type: 'FETCH_POSTS',
-                            searchResults: searchResults
+                            type: actions.postsFetchSearchResults,
+                            searchResults
                         });
                     });
                 });

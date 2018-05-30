@@ -21,7 +21,7 @@ export default {
      *
      * @return {Object}
      */
-    getParams: function() {
+    getParams: function () {
         var i, l, parts, result = {},
             params = this.getSearch().substr(1).split('&');
 
@@ -39,6 +39,10 @@ export default {
      * @return {string}
      */
     getSearch: function () {
-        return window.location.search || '?'
+        if (typeof window !== 'undefined') {
+            return window.location.search || '?';
+        }
+
+        return '?';
     }
-}
+};

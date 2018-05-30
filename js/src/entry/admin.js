@@ -1,9 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {Provider} from 'react-redux'
+import 'whatwg-fetch';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import store from '../store'
-import AdminRouter from '../components/admin/navbar'
+import store from '../store';
+import AdminRouter from '../components/admin/navbar';
 
 ReactDOM.render(
     <Provider store={store}>

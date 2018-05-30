@@ -1,34 +1,36 @@
+import actions from './constants';
+
 export default {
     getSubscribers() {
-        return function(dispatch) {
+        return function (dispatch) {
             fetch('/api/subscribers', {
                 credentials: 'include'
             })
                 .then((response) => {
                     response.json().then((subscribers) => {
                         dispatch({
-                            type: 'FETCH_SUBSCRIBERS_COMPLETE',
+                            type: actions.subscribersFetchComplete,
                             subscribers: subscribers
-                        })
-                    })
-                })
-        }
+                        });
+                    });
+                });
+        };
     },
 
     getUsers() {
-        return function(dispatch) {
+        return function (dispatch) {
             fetch('/api/users', {
                 credentials: 'include'
             })
                 .then((response) => {
                     response.json().then((users) => {
                         dispatch({
-                            type: 'FETCH_USERS_COMPLETE',
+                            type: actions.usersFetchComplete,
                             users: users
-                        })
-                    })
-                })
-        }
+                        });
+                    });
+                });
+        };
     },
 
     createUser() {
@@ -42,4 +44,4 @@ export default {
     removeUser() {
 
     }
-}
+};

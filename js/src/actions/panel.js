@@ -1,10 +1,12 @@
+import actions from './constants';
+
 export default {
     toggleActivePanel(panel) {
         let state = require('../store').default.getState();
 
         return {
-            type: 'SET_ACTIVE_PANEL',
-            panel: (state.activePanel === panel ? '' : panel)
+            type: actions.panelSetActive,
+            panel: (state.panels.activePanel === panel ? '' : panel)
         };
     }
-}
+};

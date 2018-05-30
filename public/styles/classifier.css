@@ -1,0 +1,51 @@
+#geerydev-classifier {
+    font-size: 1.5em;
+}
+
+#geerydev-classifier .pad-box {
+    padding: 20px 10px;
+}
+
+#geerydev-classifier form {
+    margin: 15px 0;
+}
+
+#geerydev-classifier input[type="text"] {
+    font-size: 1.2em;
+    height: 2.2em;
+    box-shadow: 0 0 5px;
+}
+
+.gd-classifier-explanation {
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s
+}
+
+.gd-classifier-explanation.hidden {
+    opacity: 0;
+    max-height: 0;
+}
+
+.gd-classifier-results-container {
+    max-height: 600px;
+    overflow: hidden;
+}
+
+.gd-classifier-results-container table tr:first-child {
+    opacity: 1;
+    height: auto;
+    transition: height .18s, opacity .25s;
+    -webkit-transition: height .18s, opacity .25s;
+}
+
+.gd-classifier-results-container.stealth table tr:first-child {
+    opacity: 0;
+    height: 0;
+}
+
+.gd-classifier-results-container table td {
+    padding: 0.25em;
+}

@@ -3,6 +3,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
+        classifier: './js/src/entry/classifier',
         index: './js/src/entry/index',
         portfolio: './js/src/entry/portfolio',
         about: './js/src/entry/about',

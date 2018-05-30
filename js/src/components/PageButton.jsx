@@ -4,12 +4,12 @@ import url from '../utils/url';
 
 export default class Comment extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.urlProps = {
             page: this.props.page,
             per_page: this.props.per_page
-        }
+        };
     }
 
     render() {

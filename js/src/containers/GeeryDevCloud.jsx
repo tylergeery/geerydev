@@ -5,7 +5,7 @@ import cloudActions from '../actions/cloud';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        searchResults: state.searchResults
+        searchResults: state.posts.searchResults
     }
 );
 

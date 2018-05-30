@@ -1,5 +1,6 @@
+import 'whatwg-fetch';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import '../common/navComponents';
@@ -9,22 +10,16 @@ import GeeryDevHomePanel from '../containers/GeeryDevHomePanel';
 import GeeryDevPostList from '../containers/GeeryDevPostList';
 import url from '../utils/url';
 
-ReactDOM.render(
+hydrate(
     <Provider store={store}>
         <GeeryDevHomePanel />
     </Provider>,
   document.getElementById('geerydev-home-panel')
 );
 
-ReactDOM.render(
+hydrate(
     <Provider store={store}>
         <GeeryDevPostList />
     </Provider>,
   document.getElementById('geerydev-posts')
 );
-
-const params = url.getParams();
-const perPage = +params.per_page || 10;
-const page = +params.page || 1;
-
-store.dispatch(postActions.getPostList('', '', page, perPage));

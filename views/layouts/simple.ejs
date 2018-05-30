@@ -18,5 +18,10 @@
             <%- content %>
         </div>
     </div>
+
+    <script>
+        window.GeeryDev = window.GeeryDev || {};
+        window.GeeryDev.state = <%- JSON.stringify(state) %>;
+    </script>
 </body>
 </html>

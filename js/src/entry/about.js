@@ -1,6 +1,7 @@
+import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 
 import '../common/navComponents';
 import '../common/panelSpy';
@@ -15,4 +16,4 @@ ReactDOM.render(
   document.getElementById('geerydev-side-panel')
 );
 
-store.dispatch(postActions.getSideBarPosts())
+store.dispatch(postActions.getSideBarPosts());

@@ -4,7 +4,7 @@ import SidePanel from '../components/SidePanel';
 
 const mapStateToProps = (state, ownProps) => (
     {
-        sidePanelPosts: state.sidePanelPosts
+        sidePanelPosts: state.posts.sidePanelPosts
     }
 );
 

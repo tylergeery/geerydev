@@ -13,12 +13,32 @@ export default class Domain {
         return this.domains[pos];
     }
 
-    removeValue(pos, value) {
-        let indy = this.domains[pos].indexOf(value);
+    /**
+     * Simply counts amount of non-empty spaces
+     *
+     * @return {int}
+     */
+    getHeuristicValue() {
+        let invalid = -1;
+        let value = this.board.board.length;
 
-        if (index > -1) {
-            this.domains[pos].splice(indy, 1);
+        for (let i = 0; i < this.board.board.length; i++) {
+            let available = this.getDomainValues(i);
+
+            if (!available.length) {
+                return invalid;
+            }
+
+            if (available.length === 1 && this.board.getValue(i) && this.board.getValue(i) !== available[0]) {
+                return invalid;
+            }
+
+            if (this.board.getValue(i) === 0) {
+                value--;
+            }
         }
+
+        return value;
     }
 
     getOpenPos() {
@@ -35,6 +55,14 @@ export default class Domain {
         }
 
         return -1;
+    }
+
+    removeValue(pos, value) {
+        let indy = this.domains[pos].indexOf(value);
+
+        if (index > -1) {
+            this.domains[pos].splice(indy, 1);
+        }
     }
 
     updateDomainValues(pos) {

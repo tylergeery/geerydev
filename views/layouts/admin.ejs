@@ -17,6 +17,11 @@
         <%- content %>
     </div>
 
+    <script>
+        window.GeeryDev = window.GeeryDev || {};
+        window.GeeryDev.state = <%- JSON.stringify(state) %>;
+    </script>
+
     <!-- Add JS files here -->
     <script type="text/javascript" src="admin.js" async></script>
 </body>
