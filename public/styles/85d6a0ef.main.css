@@ -658,7 +658,7 @@ ul {
 }
 .response {
     overflow: hidden;
-    white-space: pre-wrap
+
 }
 .response iframe,
 .response img {
@@ -688,6 +688,11 @@ ul {
     color: #646464;
     border-radius: 10px;
     background: #e5e5e5
+}
+.response code {
+    white-space: pre-wrap;
+    padding: 5px 5px 20px;
+    display: block;
 }
 
 .gd-fade-down-in {
