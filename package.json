@@ -31,7 +31,7 @@
     "ejs-layouts": "0.0.1",
     "express": "~3.4.3",
     "lodash": "^2.4.2",
-    "mongoose": "~5.0.0",
+    "mongoose": "~5.7.5",
     "mongoose-unique-validator": "~0.3.0",
     "newrelic": "^4.1.3",
     "nodemailer": "^4.6.5",
