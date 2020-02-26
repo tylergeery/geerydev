@@ -2,5 +2,5 @@
 *.hot-update.json
 npm-debug.log
 node_modules/
-js/dist
+server/js/dist
 secrets.json
