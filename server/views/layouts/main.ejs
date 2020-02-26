@@ -21,17 +21,17 @@
     <!-- Add your site or application content here -->
     <div class="geery" id="geerydev-container">
         <div>
-            <%= include ../partials/headbar %>
+            <%- include('../partials/headbar',  {headerString: headerString || ''}) %>
         </div>
 
         <div>
-            <%= include ../partials/navbar %>
+            <%- include('../partials/navbar', {navString: navString || ''}) %>
         </div>
 
         <%- content %>
     </div>
 
-    <%= include ../partials/footer %>
+    <%- include('../partials/footer') %>
 
     <script>
         window.GeeryDev = window.GeeryDev || {};
