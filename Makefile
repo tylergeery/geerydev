@@ -16,8 +16,8 @@ image_path=./infra/docker
 
 dev: ## Get a dev docker environment up and running
 	docker network create $(network_name)
-	docker run --network -p 27017 --name $(container_mongodb) -d $(image_mongodb)
-	docker run -p 8000:8080 --name $(container_node) -d $(image_node_dev)
+	docker run --network $(network_name) -p 27017 --name $(container_mongodb) -d $(image_mongodb)
+	docker run --network $(network_name) -p 8000:8080 -v $(shell pwd)/server:/usr/src/app --name $(container_node) -d $(image_node_dev)
 
 dev-images: ## Build local docker images
 	docker build -f $(image_path)/node/Dockerfile --target dev -t $(image_node_dev) $(build_path)
