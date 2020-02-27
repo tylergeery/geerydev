@@ -2,6 +2,7 @@ container_mongodb=gd-mongodb
 container_node=gd-node
 
 image_mongodb=mongo
+image_mongodb_dev=gd-image-mongodb-dev
 image_node=gd-image-node
 image_node_dev=gd-image-node-dev
 
@@ -16,10 +17,11 @@ image_path=./infra/docker
 
 dev: ## Get a dev docker environment up and running
 	docker network create $(network_name)
-	docker run --network $(network_name) -p 27017 --name $(container_mongodb) -d $(image_mongodb)
+	docker run --network $(network_name) -p 27017 --name $(container_mongodb) -d $(image_mongodb_dev)
 	docker run --network $(network_name) -p 8000:8080 -v $(shell pwd)/server:/usr/src/app --name $(container_node) -d $(image_node_dev)
 
 dev-images: ## Build local docker images
+	docker build -f $(image_path)/mongodb/Dockerfile -t $(image_mongodb_dev) $(build_path)
 	docker build -f $(image_path)/node/Dockerfile --target dev -t $(image_node_dev) $(build_path)
 
 dev-rm: ## Tear down local dev env
@@ -28,7 +30,7 @@ dev-rm: ## Tear down local dev env
 	docker network rm $(network_name)
 
 dev-clean: ## Delete local docker images
-	docker rmi $(container_mongodb) $(container_node)
+	docker rmi $(image_node_dev) $(image_mongodb_dev)
 
 prod-images:
 	docker build -f $(image_path)/node/Dockerfile --target prod -t $(image_node) $(build_path)

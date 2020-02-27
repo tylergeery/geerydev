@@ -14,5 +14,5 @@ module.exports = {
             }
         }
     },
-    sessionSecret: process.env.SESSION_SECRET || 'tylerjacksongeery'
+    sessionSecret: process.env.SESSION_SECRET || 'session_secret'
 };

@@ -3,9 +3,7 @@
 module.exports = {
     env: 'production',
     mongo: {
-        uri: process.env.MONGOLAB_URI ||
-            process.env.MONGOHQ_URL ||
-            process.env.MONGO_CONNECTION
+        uri: process.env.MONGO_HOST
     },
     sessionSecret: process.env.SESSION_SECRET,
     mailPass: process.env.MAIL_PASS
