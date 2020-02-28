@@ -15,10 +15,16 @@ image_path=./infra/docker
 .PHONY: help dev test
 .DEFAULT_GOAL := help
 
-dev: ## Get a dev docker environment up and running
+dev: dev-setup dev-provision ## Get a dev docker environment up and running
+
+dev-setup:
 	docker network create $(network_name)
-	docker run --network $(network_name) -p 27017 --name $(container_mongodb) -d $(image_mongodb_dev)
+	docker run --network $(network_name) -p 27017 -v $(shell pwd)/data:/dump --name $(container_mongodb) -d $(image_mongodb_dev)
 	docker run --network $(network_name) -p 8000:8080 -v $(shell pwd)/server:/usr/src/app --name $(container_node) -d $(image_node_dev)
+
+dev-provision:
+	# TODO: get this working
+	# docker exec -it $(container_mongodb) sh -c "mongorestore --uri=mongodb://geerydev:password@gd-mongodb:27017/geerydev?authSource=admin&gssapiServiceName=mongodb /dump"
 
 dev-images: ## Build local docker images
 	docker build -f $(image_path)/mongodb/Dockerfile -t $(image_mongodb_dev) $(build_path)

@@ -1,5 +1,6 @@
 *.hot-update.js
 *.hot-update.json
+data
 npm-debug.log
 node_modules/
 server/js/dist

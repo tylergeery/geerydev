@@ -4,7 +4,7 @@
  * Load environment configuration
  */
 var path = require('path');
-var rootPath = path.normalize(__dirname + '/../../..');
+var rootPath = path.normalize(__dirname + '/../..');
 
 module.exports = {
     env: process.env.ENV || 'dev',
@@ -12,8 +12,9 @@ module.exports = {
     port: 8080,
     mongo: {
         uri: process.env.MONGO_HOST,
-        db: {
-            safe: true
+        options: {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         }
     },
     sessionSecret: process.env.SESSION_SECRET || 'session_secret',

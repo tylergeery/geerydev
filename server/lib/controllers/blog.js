@@ -26,7 +26,7 @@ exports.getBlogs = function (req, res) {
 
     if (req.params.id) {
         return Blog.findById({ _id: ObjectId(req.params.id) }, function (err, blog) {
-            if (!err) {
+            if (!err && blog) {
                 return res.json(blog);
             }
 
