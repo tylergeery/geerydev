@@ -11,6 +11,12 @@ EXPOSE 8080
 
 FROM builder as dev
 
+ENV MONGO_HOST 'mongodb://geerydev:password@gd-mongodb:27017/geerydev?authSource=admin&gssapiServiceName=mongodb'
+ENV ENV 'dev'
+ENV NODE_ENV 'dev'
+ENV SESSION_SECRET 'session_secret'
+ENV MAIL_PASS=''
+
 CMD [ "npm", "run", "start:dev" ]
 
 

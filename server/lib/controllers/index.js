@@ -76,14 +76,14 @@ exports.index = function (req, res) {
                 });
         }, function (err) {
             console.log('Twas an error: ' + err);
-            return res.error(err);
+            return res.status(500).send(err);
         });
 };
 
 exports.post = function (req, res) {
     return Blog.findById({ _id: ObjectId(req.params.id) }, function (err, blog) {
-        if (!err) {
-            res.layout('layouts/main', addToLayoutVars({
+        if (!err && blog) {
+            return res.layout('layouts/main', addToLayoutVars({
                     title: 'GeeryDev Ramblings on Programming, Life, and Whatever else',
                     script: 'single.js',
                     stylesheets: []
@@ -100,6 +100,8 @@ exports.post = function (req, res) {
                     }
                 });
         }
+
+        return res.status(404).send("Not found")
     });
 };
 
@@ -128,7 +130,7 @@ exports.portfolio = function (req, res) {
                 });
         }, (err) => {
             console.log('Error fetching projects: ' + err);
-            return res.error(err);
+            return res.status(500).send(err);
         });
 };
 

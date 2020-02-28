@@ -1,10 +1,22 @@
 'use strict';
 
-var _ = require('lodash');
-
 /**
  * Load environment configuration
  */
-module.exports = _.extend(
-    require('./env/all.js'),
-    require('./env/' + process.env.NODE_ENV + '.js') || {});
+var path = require('path');
+var rootPath = path.normalize(__dirname + '/../..');
+
+module.exports = {
+    env: process.env.ENV || 'dev',
+    root: rootPath,
+    port: 8080,
+    mongo: {
+        uri: process.env.MONGO_HOST,
+        options: {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        }
+    },
+    sessionSecret: process.env.SESSION_SECRET || 'session_secret',
+    mailPass: process.env.MAIL_PASS
+};

@@ -5,10 +5,8 @@ import { Provider } from 'react-redux';
 
 import '../common/navComponents';
 import store from '../store';
-import postActions from '../actions/post';
 import GeeryDevHomePanel from '../containers/GeeryDevHomePanel';
 import GeeryDevPostList from '../containers/GeeryDevPostList';
-import url from '../utils/url';
 
 hydrate(
     <Provider store={store}>
