@@ -13,6 +13,14 @@ spec:
   selector:
     role: mongo
 ---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+  name: fast
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-ssd
+---
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
@@ -35,8 +43,6 @@ spec:
           volumeMounts:
             - name: mongo-persistent-storage
                 mountPath: /data/db
-          env:
-            #TODO
   volumeClaimTemplates:
   - metadata:
     name: gd-mongo-persistent-storage
