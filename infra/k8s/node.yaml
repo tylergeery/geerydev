@@ -4,10 +4,10 @@ kind: Service
 metadata:
   name: gd-node
   labels:
-    name: gd-node
+    app: node
 spec:
   ports:
-  - port: 8080
+  - port: 80
     targetPort: 8080
   selector:
     role: node
@@ -17,7 +17,6 @@ kind: Deployment
 metadata:
   name: gd-node-deployment
 spec:
-  serviceName: "gd-mongodb"
   replicas: 2
   template:
     metadata:
@@ -25,9 +24,12 @@ spec:
         role: node
         environment: prod
     spec:
+      nodeSelector:
+        use: "general"
       containers:
         - name: gd-node
-          image: node:10
+          image: tylergeery/gd-image-node
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
@@ -39,7 +41,7 @@ spec:
             - name: ENV
               value: 'prod'
             - name: NODE_ENV
-              value: 'prod'
+              value: 'production'
             - name: SESSION_SECRET
               valueFrom:
                 secretKeyRef:

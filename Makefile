@@ -3,7 +3,7 @@ container_node=gd-node
 
 image_mongodb=mongo
 image_mongodb_dev=gd-image-mongodb-dev
-image_node=gd-image-node
+image_node=tylergeery/gd-image-node
 image_node_dev=gd-image-node-dev
 
 network_name=geerydev
@@ -11,6 +11,9 @@ network_name=geerydev
 build_path=.
 image_path=./infra/docker
 
+k8s_cluster_name=gke_geerydev_us-west1-a_geerydev-cluster
+k8s_context_name=gke_geerydev_us-west1-a_geerydev-cluster
+k8s_path=./infra/k8s
 
 .PHONY: help dev test
 .DEFAULT_GOAL := help
@@ -40,9 +43,16 @@ dev-clean: ## Delete local docker images
 
 prod-images:
 	docker build -f $(image_path)/node/Dockerfile --target prod -t $(image_node) $(build_path)
+	docker push $(image_node)
 
-deploy: ## Deploy application
-	echo 'TODO'
+set-env:
+	kubectl config set-context $(k8s_context_name)
+	kubectl config set-cluster $(k8s_cluster_name)
+
+deploy: set-env ## Deploy application
+	kubectl apply -f $(k8s_path)/secrets.yaml
+	kubectl apply -f $(k8s_path)/mongo.yaml
+	kubectl apply -f $(k8s_path)/node.yaml
 
 test: ## Run app tests
 	docker exec -it $(container_node) npm run test
