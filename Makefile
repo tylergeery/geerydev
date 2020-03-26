@@ -3,7 +3,7 @@ container_node=gd-node
 
 image_mongodb=mongo
 image_mongodb_dev=gd-image-mongodb-dev
-image_node=gd-image-node
+image_node=tylergeery/gd-image-node
 image_node_dev=gd-image-node-dev
 
 network_name=geerydev
@@ -40,9 +40,11 @@ dev-clean: ## Delete local docker images
 
 prod-images:
 	docker build -f $(image_path)/node/Dockerfile --target prod -t $(image_node) $(build_path)
+	docker push $(image_node)
 
-deploy: ## Deploy application
-	echo 'TODO'
+deploy: prod-images ## Deploy application
+	docker run --network prod -p 27017 --name $(container_mongodb) -d $(image_mongodb)
+	docker run --network prod -p 8080 --name $(container_node) -d $(image_node)
 
 test: ## Run app tests
 	docker exec -it $(container_node) npm run test
