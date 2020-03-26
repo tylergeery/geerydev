@@ -13,22 +13,6 @@ var index = require('./controllers'),
  * Application routes
  */
 module.exports = function (app) {
-
-    // enforce ssl
-    if (process.env.NODE_ENV === 'production') {
-        app.get('*', function (req, res, next) {
-            if (req.headers['x-forwarded-proto'] !== 'https' && req.get('host')) {
-                // redirect for non https
-                res.redirect(301, 'https://' + req.get('host') + req.originalUrl);
-            } else if (!/^www\..*/i.test(req.get('host'))) {
-                // redirect for non www
-                res.redirect(301, 'http://www.' + req.get('host') + req.originalUrl);
-            } else {
-                next();
-            }
-        });
-    }
-
     // projects api
     app.get('/api/projects', projects.getProjects);
     app.post('/api/projects', middleware.auth, projects.postProjects);
@@ -78,11 +62,6 @@ module.exports = function (app) {
     app.get('/requests/:id', index.post);
     app.get('/sudoku', index.sudoku);
     app.get('/classifier', index.classifier);
-
-    // lets encrypt
-    app.get('/.well-known/acme-challenge/u6OicboGZocDd-QY4T7OySzKnjI_LQgQL6WdaJ0eHrw', function (req, res) {
-        res.send('u6OicboGZocDd-QY4T7OySzKnjI_LQgQL6WdaJ0eHrw.VacMdJF5bWTawpfpvr9krfTrN_RlwMpAScU-X_RuPjc');
-    });
 
     app.get('/google344be072c4fd2e1c.html', function (req, res) {
         res.send('google-site-verification: google344be072c4fd2e1c.html');
