@@ -109,7 +109,6 @@ exports.portfolio = function (req, res) {
     return projectService
         .query({}, 'type image created title link detail', 'title', '-created', 0, 10)
         .then((projects) => {
-            console.log('projects:', projects);
             store.dispatch(projectActions.setProjectList(projects));
 
             return res.layout('layouts/main', addToLayoutVars({

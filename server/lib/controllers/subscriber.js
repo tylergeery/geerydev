@@ -6,7 +6,6 @@ var mongoose = require('mongoose'),
 
 exports.addSubscriber = function(req,res) {
     if(req.body.email) {
-        console.log("Got here", JSON.stringify(req.body));
         return Subscriber.find({email:req.body.email}).exec(function(err, scribe) {
             if (scribe.length < 1) {
                 var subscriber = new Subscriber({email:req.body.email});

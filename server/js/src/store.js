@@ -7,6 +7,7 @@ import reducer from './reducers/index';
 let store;
 
 if (typeof GeeryDev !== 'undefined') {
+    // on the client
     store = createStore(
         reducer,
         Object.assign({}, GeeryDev.state),
@@ -14,9 +15,10 @@ if (typeof GeeryDev !== 'undefined') {
     );
     delete GeeryDev.state;
 } else {
+    // on the server
     store = createStore(
         reducer,
-        applyMiddleware(logger, ReduxThunk)
+        applyMiddleware(ReduxThunk)
     );
 }
 
