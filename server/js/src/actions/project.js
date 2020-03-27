@@ -25,8 +25,9 @@ export default {
             fetch('/api/projects', {
                 credentials: 'include',
                 method: project._id ? 'PUT' : 'POST',
-                body: formData.getFromObject(project),
+                body: JSON.stringify(project),
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             })

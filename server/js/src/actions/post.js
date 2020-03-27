@@ -45,9 +45,10 @@ export default {
         return (dispatch) => (
             fetch('/api/blogs', {
                 method: 'POST',
-                body: formData.getFromObject(postInfo),
+                body: JSON.stringify(postInfo),
                 credentials: 'include',
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             })
@@ -68,9 +69,10 @@ export default {
         return (dispatch) => (
             fetch('/api/blogs/' + id, {
                 method: 'PUT',
-                body: formData.getFromObject(postInfo),
+                body: JSON.stringify(postInfo),
                 credentials: 'include',
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             })

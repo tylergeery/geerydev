@@ -32,8 +32,9 @@ export default {
         return (dispatch) => (
             fetch('/api/comments', {
                 method: 'POST',
-                body: formData.getFromObject(comment),
+                body: JSON.stringify(comment),
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             })

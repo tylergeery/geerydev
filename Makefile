@@ -23,8 +23,7 @@ dev-setup:
 	docker run --network $(network_name) -p 8000:8080 -v $(shell pwd)/server:/usr/src/app --name $(container_node) -d $(image_node_dev)
 
 dev-provision:
-	# TODO: get this working
-	# docker exec -it $(container_mongodb) sh -c "mongorestore --uri=mongodb://geerydev:password@gd-mongodb:27017/geerydev?authSource=admin&gssapiServiceName=mongodb /dump"
+	docker exec -it $(container_mongodb) sh -c "mongorestore --uri=mongodb://geerydev:password@gd-mongodb:27017 /dump"
 
 dev-images: ## Build local docker images
 	docker build -f $(image_path)/mongodb/Dockerfile -t $(image_mongodb_dev) $(build_path)
@@ -43,8 +42,10 @@ prod-images:
 	docker push $(image_node)
 
 deploy: prod-images ## Deploy application
-	docker run --network prod -p 27017 --name $(container_mongodb) -d $(image_mongodb)
-	docker run --network prod -p 8080 --name $(container_node) -d $(image_node)
+	# TODO: ansible deploy
+
+build-js:
+	docker exec -it $(container_node) npm run build
 
 test: ## Run app tests
 	docker exec -it $(container_node) npm run test

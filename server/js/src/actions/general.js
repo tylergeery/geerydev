@@ -12,8 +12,9 @@ export default {
         return (dispatch) => (
             fetch('/api/subscribe', {
                 method: 'POST',
-                body: formData.getFromObject(body),
+                body: JSON.stringify(body),
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
             })

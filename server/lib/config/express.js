@@ -7,7 +7,6 @@ var express = require('express'),
     passport = require('passport'),
     session = require('express-session'),
     logger = require('express-logger'),
-    json = require('express-json'),
     favicon = require('express-favicon'),
     cookieParser = require('cookie-parser'),
     MongoStore = require('connect-mongo')(session);
@@ -25,7 +24,7 @@ module.exports = function (app) {
     app.set('view engine', 'ejs');
     app.use(ejsLayout.express);
     app.use(logger({path: "/tmp/geerydev.txt"}));
-    app.use(json());
+    app.use(express.json());
     app.use(express.urlencoded());
     app.use(cookieParser());
 
