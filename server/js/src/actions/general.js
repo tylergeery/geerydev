@@ -12,7 +12,10 @@ export default {
         return (dispatch) => (
             fetch('/api/subscribe', {
                 method: 'POST',
-                body: formData.getFromObject(body)
+                body: formData.getFromObject(body),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
                 .then((response) => {
                     dispatch({

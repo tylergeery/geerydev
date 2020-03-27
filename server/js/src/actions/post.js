@@ -46,7 +46,10 @@ export default {
             fetch('/api/blogs', {
                 method: 'POST',
                 body: formData.getFromObject(postInfo),
-                credentials: 'include'
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
                 .then((response) => {
                     response.json().then((post) => {
@@ -66,7 +69,10 @@ export default {
             fetch('/api/blogs/' + id, {
                 method: 'PUT',
                 body: formData.getFromObject(postInfo),
-                credentials: 'include'
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
                 .then((response) => {
                     response.json().then((post) => {

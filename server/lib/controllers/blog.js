@@ -114,12 +114,12 @@ exports.updateBlog = function (req, res) {
                         return res.send(updated);
                     });
                 }
-            } else {
-                console.log('Error: ' + JSON.stringify(err));
-                return res.send(err);
+
+                return res.send(updated);
             }
 
-            return res.send(blog);
+            console.log('Error: ' + JSON.stringify(err));
+            return res.send(err);
         });
     });
 };

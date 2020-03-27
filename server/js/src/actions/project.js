@@ -25,7 +25,10 @@ export default {
             fetch('/api/projects', {
                 credentials: 'include',
                 method: project._id ? 'PUT' : 'POST',
-                body: formData.getFromObject(project)
+                body: formData.getFromObject(project),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
                 .then((response) => {
                     dispatch(this.getProjectList());

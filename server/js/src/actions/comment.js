@@ -32,7 +32,10 @@ export default {
         return (dispatch) => (
             fetch('/api/comments', {
                 method: 'POST',
-                body: formData.getFromObject(comment)
+                body: formData.getFromObject(comment),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
                 .then((response) => {
                     dispatch(this.getComments(comment.blogId));
