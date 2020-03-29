@@ -2,7 +2,7 @@ FROM node:10 as builder
 
 WORKDIR /usr/src/app
 
-COPY ./server .
+COPY ./src .
 RUN npm install
 
 EXPOSE 8080

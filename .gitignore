@@ -3,5 +3,5 @@
 data
 npm-debug.log
 node_modules/
-server/js/dist
+src/js/dist
 secrets.json
