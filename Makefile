@@ -41,8 +41,8 @@ prod-images:
 	docker build -f $(image_path)/node/Dockerfile --target prod -t $(image_node) $(build_path)
 	docker push $(image_node)
 
-deploy: prod-images ## Deploy application
-	# TODO: ansible deploy
+deploy: ## Deploy application
+	ansible-playbook ./infra/deploy/deploy.yml --vault-password-file ./infra/deploy/.vault_pass.txt
 
 build-js:
 	docker exec -it $(container_node) npm run build
