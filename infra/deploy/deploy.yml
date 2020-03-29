@@ -1,0 +1,27 @@
+---
+- hosts: geerydev
+  become: yes
+
+  tasks:
+    - name: Get deployment secrets
+      include_vars: secrets.yml
+    - name: Pull latest docker image
+      shell: docker pull tylergeery/gd-image-node
+    - name: Stop existing deployment
+      docker_container:
+        name: gd-node
+        state: absent
+    - name: Start new deployment
+      docker_container:
+        name: gd-node
+        image: tylergeery/gd-image-node
+        detach: yes
+        networks:
+          - name: prod
+        env:
+          ENV: prod
+          NODE_ENV: production
+          MAIL_PASS: "{{mail_pass}}"
+          SESSION_SECRET: "{{session_secret}}"
+          MONGO_HOST: "{{mongo_host}}"
+        restart_policy: always
