@@ -10,7 +10,13 @@ const mapStateToProps = (state, ownProps) => (
     }
 );
 
-const mapDispatchToProps = (dispatch, ownProps) => ({});
+const mapDispatchToProps = (dispatch, ownProps) => (
+    {
+        deleteSubscriber(subscriberId) {
+            store.dispatch(adminActions.removeSubscriber(subscriberId));
+        }
+    }
+);
 
 const AdminSubscribers = connect(
     mapStateToProps,
