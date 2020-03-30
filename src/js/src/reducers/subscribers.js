@@ -13,7 +13,7 @@ export default function subscribers(state, action) {
 
     switch (action.type) {
         case actions.subscribersFetchComplete:
-            newState.list = action.list;
+            newState.list = action.subscribers;
 
             return newState;
     }

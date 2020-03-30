@@ -41,7 +41,11 @@ export default {
 
     },
 
-    removeUser() {
+    removeUser(userId) {
+
+    },
+
+    removeSubscriber(subscriberId) {
 
     }
 };
