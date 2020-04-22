@@ -6,7 +6,6 @@ var express = require('express'),
     config = require('./config'),
     passport = require('passport'),
     session = require('express-session'),
-    logger = require('express-logger'),
     favicon = require('express-favicon'),
     cookieParser = require('cookie-parser'),
     MongoStore = require('connect-mongo')(session);
@@ -23,15 +22,16 @@ module.exports = function (app) {
     app.engine('html', require('ejs').renderFile);
     app.set('view engine', 'ejs');
     app.use(ejsLayout.express);
-    app.use(logger({path: "/tmp/geerydev.txt"}));
     app.use(express.json());
-    app.use(express.urlencoded());
+    app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
 
     // Change line
     // Persist sessions with mongoStore
     app.use(session({
         secret: config.sessionSecret,
+        resave: false,
+        saveUninitialized: true,
         store: new MongoStore({
             url: config.mongo.uri,
             collection: 'sessions'

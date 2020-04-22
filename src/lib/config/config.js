@@ -14,7 +14,8 @@ module.exports = {
         uri: process.env.MONGO_HOST,
         options: {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useCreateIndex: true,
         }
     },
     sessionSecret: process.env.SESSION_SECRET || 'session_secret',
