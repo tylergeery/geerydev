@@ -33,7 +33,7 @@
     "express-json": "^1.0.0",
     "express-logger": "0.0.3",
     "express-session": "^1.17.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mongoose": "~5.9.2",
     "mongoose-unique-validator": "~0.3.0",
     "newrelic": "^4.1.3",
