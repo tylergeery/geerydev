@@ -32,17 +32,22 @@ export default class Posts extends React.Component {
             		Make a new post & question
             		<span className="pull-right blue-add">+</span>
             	</p>
-                {this.props.posts.map((post) => (
-                    <div key={post._id} className="text-muted">
+                {this.props.posts.map((post) => {
+                    return <div key={post._id} className="text-muted">
                 		<p className={classNames('post-pad point', { 'silver-back': !!post.response })} onClick={this.props.showPostForm.bind(this, post)}>
                 			{post.question} - {time.iso8601ToFullReadable(post.created)}
                 			<span onClick={this.props.submitAction.bind(this, post._id)} className={classNames('pull-right',
                                 { 'blue-add': this.state.toggle === 'add', 'red-delete': this.state.toggle !== 'add' })}>
                                     {this.state.toggle === 'add' ? '+' : '-'}
                             </span>
+                            {post.response ? (
+                                <span class="pull-right">
+                                    <button type="button" onClick={this.props.sendEmail.bind(this, post._id)}>Email</button>
+                                </span>
+                            ) : ''}
                 		</p>
                 	</div>
-                ))}
+                })}
 
                 {this.state.showPostForm
                     ? <AdminPostForm blog={this.state.post || {}} close={this.props.closePostForm.bind(this)} />

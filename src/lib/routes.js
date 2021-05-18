@@ -26,6 +26,7 @@ module.exports = function (app) {
 
     // blogs api
     app.get('/api/blogs', blog.getBlogs);
+    app.get('/api/blogs/:id/send', middleware.auth, blog.mailBlog);
     app.get('/api/blogs/:id', blog.getBlogs);
     app.post('/api/blogs', blog.postBlogs);
     app.put('/api/blogs/:id', middleware.auth, blog.updateBlog);

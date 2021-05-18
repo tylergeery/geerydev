@@ -18,7 +18,7 @@ image_path=./infra/docker
 dev: dev-setup dev-provision ## Get a dev docker environment up and running
 
 dev-setup:
-	docker network create $(network_name)
+	- docker network create $(network_name)
 	docker run --network $(network_name) -p 27017 -v $(shell pwd)/data:/dump --name $(container_mongodb) -d $(image_mongodb_dev)
 	docker run --network $(network_name) -p 8000:8080 -v $(shell pwd)/src:/usr/src/app --name $(container_node) -d $(image_node_dev)
 

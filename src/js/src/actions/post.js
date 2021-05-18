@@ -41,6 +41,18 @@ export default {
         };
     },
 
+    sendEmail(blogId) {
+        return (dispatch) => (
+            fetch('/api/blogs/' + blogId + '/send', {
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+        );
+    },
+
     create(postInfo) {
         return (dispatch) => (
             fetch('/api/blogs', {

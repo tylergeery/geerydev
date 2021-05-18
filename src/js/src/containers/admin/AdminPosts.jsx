@@ -23,6 +23,15 @@ const mapDispatchToProps = (dispatch, ownProps) => (
             }
         },
 
+        sendEmail(blogId) {
+            store.dispatch(postActions.sendEmail(blogId))
+                .then((response) =>  {
+                    console.log("send email response:", response);
+                }, (err) => {
+                    console.error("send email err:", err);
+                });
+        },
+
         closePostForm() {
             this.setState({
                 showPostForm: false

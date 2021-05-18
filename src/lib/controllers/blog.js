@@ -67,17 +67,27 @@ exports.postBlogs = function (req, res) {
         if (err) console.log('Error: ' + err);
         if (blog) console.log('Saved!' + blog);
 
-        if (postBody.response) {
-            return Subscriber.find({}).exec(function (err, subscribers) {
-                subscribers.forEach(function (subscriber) {
-                    Mail.newPost(subscriber.email, blog.question, blog._id);
-                });
+        return res.send(blog);
+    });
+};
 
-                return res.send(blog);
-            });
+exports.mailBlog = (req, res) => {
+    return Blog.findById(req.params.id, (err, blog) => {
+        if (err || !postBody.response) {
+            return res.status(400).json({ err: err || "Post missing response" });
         }
 
-        return res.send(blog);
+        return Subscriber.find({}).exec(function (err, subscribers) {
+            if (!err) {
+                return res.status(400).json({ err: err });
+            }
+
+            subscribers.forEach(function (subscriber) {
+                Mail.newPost(subscriber.email, blog.question, blog._id);
+            });
+
+            return res.send(blog);
+        });
     });
 };
 
