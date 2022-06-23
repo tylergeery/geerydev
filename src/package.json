@@ -54,7 +54,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "cheerio": "^1.0.0-rc.2",
-    "jsdom": "^8.0.4",
+    "jsdom": "^16.5.0",
     "mocha": "^7.1.0",
     "nodemon": "^2.0.2",
     "react-addons-test-utils": "~15.6.2",
